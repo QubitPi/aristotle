@@ -12,6 +12,10 @@
     <name>aristotle</name>
     <url>https://github.com/QubitPi/aristotle</url>
 
+    <modules>
+        <module>aristotle-core</module>
+    </modules>
+
     <developers>
         <developer>
             <name>Jiaqi Liu</name>
