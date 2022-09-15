@@ -15,11 +15,13 @@
  */
 package com.qubitpi.aristotle.async.jobs.jobrows;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Locale;
 import java.util.Objects;
 
 /**
- * Provides an enumeration of the standard job statuses that Athena supports.
+ * Provides an enumeration of the standard job statuses that Aristotle supports.
  */
 public enum DefaultJobStatus implements JobStatus {
 
@@ -38,16 +40,18 @@ public enum DefaultJobStatus implements JobStatus {
      *
      * @throws NullPointerException if {@code description} is {@code null}
      */
-    DefaultJobStatus(final String description) {
+    DefaultJobStatus(final @NotNull String description) {
         this.name = name().toLowerCase(Locale.ENGLISH);
         this.description = Objects.requireNonNull(description);
     }
 
+    @NotNull
     @Override
     public String getName() {
         return name;
     }
 
+    @NotNull
     @Override
     public String getDescription() {
         return description;
