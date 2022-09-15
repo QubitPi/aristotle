@@ -16,6 +16,8 @@
 package com.qubitpi.aristotle.async.jobs.jobrows;
 
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -23,6 +25,8 @@ import java.util.Objects;
 /**
  * Provides an enumeration of the standard job statuses that Aristotle supports.
  */
+@Immutable
+@ThreadSafe
 public enum DefaultJobStatus implements JobStatus {
 
     /**
