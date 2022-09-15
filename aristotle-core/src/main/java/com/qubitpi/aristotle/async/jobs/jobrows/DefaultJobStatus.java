@@ -25,9 +25,24 @@ import java.util.Objects;
  */
 public enum DefaultJobStatus implements JobStatus {
 
+    /**
+     * The job is in progress.
+     */
     PENDING("This job is in progress"),
+
+    /**
+     * The job has completed successfully.
+     */
     SUCCESS("The job has completed successfully"),
+
+    /**
+     * The job has been canceled before it could be completed.
+     */
     CANCELED("The job has been canceled before it could be completed"),
+
+    /**
+     * An error occurred and the job failed to complete.
+     */
     FAILURE("An error occurred and the job failed to complete");
 
     private final String name;
