@@ -15,6 +15,7 @@
  */
 package com.qubitpi.aristotle.application;
 
+import com.qubitpi.aristotle.graphstore.GraphStore;
 import com.qubitpi.athena.config.SystemConfig;
 import com.qubitpi.athena.config.SystemConfigFactory;
 
@@ -38,10 +39,20 @@ public abstract class AbstractBinderFactory implements BinderFactory {
         return new AbstractBinder() {
             @Override
             protected void configure() {
+                bind(buildGraphStore()).to(GraphStore.class);
+
                 afterBinding(this);
             }
         };
     }
+
+    /**
+     * Registers graph data client.
+     *
+     * @return a service for fetching graphs
+     */
+    @NotNull
+    protected abstract Class<? extends GraphStore> buildGraphStore();
 
     @Override
     public void afterRegistration(final ResourceConfig resourceConfig) {

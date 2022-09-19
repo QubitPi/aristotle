@@ -16,7 +16,6 @@
 package com.qubitpi.aristotle.web
 
 import graphql.language.Document
-import graphql.language.Node
 import graphql.language.NodeVisitor
 import graphql.parser.Parser
 import graphql.util.DefaultTraverserContext

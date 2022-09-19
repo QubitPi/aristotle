@@ -17,6 +17,7 @@ package com.qubitpi.aristotle.web.endpoints;
 
 import static com.qubitpi.aristotle.web.ErrorMessageFormat.TOP_ID_NOT_FOUND;
 
+import com.qubitpi.aristotle.graphstore.GraphStore;
 import com.qubitpi.aristotle.web.TopSelectionFieldIdArgumentExtractor;
 
 import org.slf4j.Logger;
@@ -27,9 +28,12 @@ import graphql.language.NodeVisitor;
 import graphql.parser.Parser;
 import graphql.util.DefaultTraverserContext;
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -42,11 +46,27 @@ import javax.ws.rs.core.Response;
  * <a href="https://graphql.org/learn/serving-over-http/">GraphQL documentation</a> for specifications on serving
  * GraphQL over HTTP.
  */
+@Immutable
+@ThreadSafe
 @Singleton
 @Path("/data/graphql")
 public class DataServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataServlet.class);
+
+    private final GraphStore graphStore;
+
+    /**
+     * DI constructor.
+     *
+     * @param graphStore  A delegating layer that handles all REST operations.
+     *
+     * @throws NullPointerException if any argument is {@code null}
+     */
+    @Inject
+    public DataServlet(@NotNull final GraphStore graphStore) {
+        this.graphStore = Objects.requireNonNull(graphStore);
+    }
 
     /**
      * Query graph data via GraphQL GET.
@@ -65,7 +85,7 @@ public class DataServlet {
 
         return Response
                 .status(Response.Status.OK)
-                .entity(getGraphData(rootFieldId))
+                .entity(getGraphStore().getGraph(rootFieldId))
                 .build();
     }
 
@@ -109,15 +129,8 @@ public class DataServlet {
                 });
     }
 
-    /**
-     * A simple abstraction layer for query delegation.
-     *
-     * @param rootFieldId  A search key
-     *
-     * @return a complete response graph
-     */
     @NotNull
-    private Object getGraphData(final String rootFieldId) {
-        return null;
+    private GraphStore getGraphStore() {
+        return graphStore;
     }
 }
