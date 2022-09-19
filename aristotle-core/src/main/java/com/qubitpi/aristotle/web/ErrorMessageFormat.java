@@ -45,7 +45,7 @@ public enum ErrorMessageFormat {
      *         user {
      *             name
      *         }
-     *         location {
+     *         location(id: "344524") {
      *             city
      *             zip
      *         }
@@ -56,8 +56,7 @@ public enum ErrorMessageFormat {
     TOP_ID_NOT_FOUND(
             "Invalid GraphQL query. An 'id' argument with string value must exist in the first top selection",
             "Visitor doesn't find target 'id' from '%s'"
-    )
-    ;
+    );
 
     private final String messageFormat;
     private final String loggingFormat;
@@ -67,7 +66,7 @@ public enum ErrorMessageFormat {
      *
      * @param messageFormat  The format string for logging and messaging
      *
-     * @throws NullPointerException if any {@code messageFormat} is {@code null}
+     * @throws NullPointerException if {@code messageFormat} is {@code null}
      */
     ErrorMessageFormat(final @NotNull String messageFormat) {
         this(messageFormat, messageFormat);
@@ -79,7 +78,7 @@ public enum ErrorMessageFormat {
      * @param messageFormat  User facing message format
      * @param loggingFormat  Server log message format
      *
-     * @throws NullPointerException if any argument is {@code null}
+     * @throws NullPointerException if {@code messageFormat} or {@code loggingFormat} is {@code null}
      */
     ErrorMessageFormat(final @NotNull String messageFormat, final @NotNull String loggingFormat) {
         this.messageFormat = Objects.requireNonNull(messageFormat);
