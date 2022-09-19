@@ -33,13 +33,6 @@ public abstract class AbstractBinderFactory implements BinderFactory {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
     private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
 
-    private static final String FILE_ID_HASHING_ALGORITHM_KEY = "file_id_hashing_algorithm";
-    private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
-
-    private static final String FILE_ID_HASHING_ALGORITHM = SYSTEM_CONFIG.getStringProperty(
-            SYSTEM_CONFIG.getPackageVariableName(FILE_ID_HASHING_ALGORITHM_KEY)
-    ).orElse(FILE_ID_HASHING_ALGORITHM_DEFAULT);
-
     @Override
     public Binder buildBinder() {
         return new AbstractBinder() {
