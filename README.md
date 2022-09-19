@@ -16,6 +16,6 @@ The use and distribution terms for [Aristotle](https://qubitpi.github.io/aristot
 
 <div align="center">
     <a href="https://opensource.org/licenses">
-        <img align="center" width="50%" alt="License Illustration" src="./apache-license.png">
+        <img align="center" width="50%" alt="License Illustration" src="https://github.com/QubitPi/QubitPi/blob/master/img/apache-2.png?raw=true">
     </a>
 </div>
