@@ -36,7 +36,7 @@ public enum DefaultJobField implements JobField {
     QUERY("query", "The data query this job is satisfying."),
 
     /**
-     * The current status of ths job.
+     * The current status of the job.
      */
     STATUS("status", "The current status of the job."),
 
