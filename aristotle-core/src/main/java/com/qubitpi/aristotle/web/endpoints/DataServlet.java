@@ -85,7 +85,7 @@ public class DataServlet {
 
         return Response
                 .status(Response.Status.OK)
-                .entity(getGraphData(rootFieldId))
+                .entity(getGraphStore().getGraph(rootFieldId))
                 .build();
     }
 
@@ -129,15 +129,8 @@ public class DataServlet {
                 });
     }
 
-    /**
-     * A simple abstraction layer for query delegation.
-     *
-     * @param rootFieldId  A search key
-     *
-     * @return a complete response graph
-     */
     @NotNull
-    private Object getGraphData(final String rootFieldId) {
-        return null;
+    private GraphStore getGraphStore() {
+        return graphStore;
     }
 }

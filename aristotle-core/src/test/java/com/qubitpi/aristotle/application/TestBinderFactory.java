@@ -21,7 +21,7 @@ import com.qubitpi.aristotle.graphstore.TestGraphStore;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
 /**
- * Athena test app configuration binder.
+ * Aristotle test app configuration binder.
  */
 public class TestBinderFactory extends AbstractBinderFactory {
 
