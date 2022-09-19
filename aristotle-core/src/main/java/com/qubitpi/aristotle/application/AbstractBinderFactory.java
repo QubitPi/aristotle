@@ -1,0 +1,66 @@
+/*
+ * Copyright Jiaqi Liu
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.qubitpi.aristotle.application;
+
+import com.qubitpi.athena.config.SystemConfig;
+import com.qubitpi.athena.config.SystemConfigFactory;
+
+import org.glassfish.hk2.utilities.Binder;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import jakarta.validation.constraints.NotNull;
+
+/**
+ * {@link AbstractBinderFactory} implements standard buildBinder functionality.
+ */
+public abstract class AbstractBinderFactory implements BinderFactory {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
+    private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
+
+    private static final String FILE_ID_HASHING_ALGORITHM_KEY = "file_id_hashing_algorithm";
+    private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
+
+    private static final String FILE_ID_HASHING_ALGORITHM = SYSTEM_CONFIG.getStringProperty(
+            SYSTEM_CONFIG.getPackageVariableName(FILE_ID_HASHING_ALGORITHM_KEY)
+    ).orElse(FILE_ID_HASHING_ALGORITHM_DEFAULT);
+
+    @Override
+    public Binder buildBinder() {
+        return new AbstractBinder() {
+            @Override
+            protected void configure() {
+                afterBinding(this);
+            }
+        };
+    }
+
+    @Override
+    public void afterRegistration(final ResourceConfig resourceConfig) {
+        // No-ops by default
+    }
+
+    /**
+     * Allows additional app-specific binding.
+     *
+     * @param abstractBinder  Binder to use for binding
+     */
+    protected void afterBinding(final @NotNull AbstractBinder abstractBinder) {
+        // No-ops by default
+    }
+}
