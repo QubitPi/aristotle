@@ -15,6 +15,8 @@
  */
 package com.qubitpi.aristotle.web.endpoints;
 
+import static com.qubitpi.aristotle.web.ErrorMessageFormat.TOP_ID_NOT_FOUND;
+
 import com.qubitpi.aristotle.web.TopSelectionFieldIdArgumentExtractor;
 
 import org.slf4j.Logger;
@@ -102,11 +104,8 @@ public class DataServlet {
         return ((TopSelectionFieldIdArgumentExtractor) nodeVisitor)
                 .getArgumentValue()
                 .orElseThrow(() -> {
-                    LOG.error("Visitor doesn't find target 'id' from {}", document);
-                    return new IllegalArgumentException(
-                            "Invalid GraphQL query. " +
-                                    "An 'id' argument with string value must exist in the first top selection"
-                    );
+                    LOG.error(TOP_ID_NOT_FOUND.logFormat(document));
+                    return new IllegalArgumentException(TOP_ID_NOT_FOUND.format());
                 });
     }
 
