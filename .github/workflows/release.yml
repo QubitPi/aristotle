@@ -25,9 +25,10 @@ jobs:
       - name: Generate settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
+          output_file: athena.xml
           repositories: '[{ "id": "download-from-github-qubitpi", "url": "https://maven.pkg.github.com/qubitpi/athena" }]'
           servers: '[{"id": "download-from-github-qubitpi", "username": "anybody", "password": "${{ secrets.DOWNLOAD_FROM_GITHUB_ARTIFACTORY }}"}]'
       - name: Publish Package to GitHub Packages
-        run: mvn --batch-mode deploy
+        run: mvn --batch-mode deploy --settings athena.xml
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_TO_ARTIFACTORY }}
