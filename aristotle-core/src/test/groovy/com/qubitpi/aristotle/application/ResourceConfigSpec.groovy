@@ -15,7 +15,6 @@
  */
 package com.qubitpi.aristotle.application
 
-import org.aeonbits.owner.ConfigFactory
 import org.glassfish.hk2.utilities.Binder
 
 import spock.lang.Specification
@@ -24,8 +23,6 @@ import java.util.function.Consumer
 
 class ResourceConfigSpec extends Specification {
 
-    static final String BINDER_KEY = "aristotle_resource_binder"
-
     static Binder binder // A mock representing the binder produced by the BinderFactory
     static Consumer clicker // A mock to arbitrarily accept events for testing
 
@@ -33,7 +30,6 @@ class ResourceConfigSpec extends Specification {
     Class<org.glassfish.jersey.server.ResourceConfig> resourceConfigClass
 
     def setup() {
-        System.setProperty(BINDER_KEY, MockingBinderFactory.canonicalName)
         clicker = Mock(Consumer)
         binder = Mock(Binder)
         resourceConfigClass = ResourceConfig
@@ -44,7 +40,6 @@ class ResourceConfigSpec extends Specification {
     def cleanup() {
         binder = null
         clicker = null
-        System.clearProperty(BINDER_KEY)
     }
 
     static Binder getBinder() {
@@ -57,7 +52,15 @@ class ResourceConfigSpec extends Specification {
 
     def "Test instantiation triggers initialization and binding lifecycle"() {
         when:
-        ResourceConfig config = resourceConfigClass.newInstance(new ApplicationConfigProvider()) as ResourceConfig
+        ResourceConfig config = resourceConfigClass.newInstance(
+                Mock(ApplicationConfigProvider) {
+                    get() >> {
+                        Mock(ApplicationConfig) {
+                            bindingFactory() >> Optional.of(MockingBinderFactory.canonicalName)
+                        }
+                    }
+                }
+        ) as ResourceConfig
 
         then:
         config.classes.containsAll(filters)

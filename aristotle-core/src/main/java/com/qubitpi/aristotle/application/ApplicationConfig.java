@@ -25,6 +25,24 @@ import java.util.Optional;
 /**
  * {@link ApplicationConfig} an interface for retrieving configuration values, allowing for compile-time null-check and
  * decomposing module config into composite config sub-objects.
+ * <p>
+ * Downstream app should put their configuration properties in af file named "userConfig.properties". When this is done,
+ * {@link ApplicationConfig} will load the properties from several sources in the follwoing order:
+ * <ol>
+ *     <li> Load the given property from the
+ *          <a href="https://docs.oracle.com/javase/tutorial/essential/environment/env.html">
+ *              operating system's environment variables
+ *          </a>; if an environment variable with the same name is found, its value will be returned.
+ *     <li> Load the given property from the
+ *          <a href="https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html">
+ *              Java system properties
+ *          </a>; if such property is defined, the associated value is returned.
+ *     <li> Load the given property from the classpath from the app-defined resource identified by the path
+ *          "classpath:userConfig.properties"; if the property is found, the associated value is returned.
+ *     <li> Load the default property defined by aristotle
+ *     <li> In case app doesn't provide a required config (such as binding factory), an {@link Optional#empty()} or
+ *          an empty collection value shall be returned.
+ * </ol>
  */
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
