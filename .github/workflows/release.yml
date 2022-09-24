@@ -11,6 +11,7 @@ jobs:
     secrets: inherit
 
   publish:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -25,10 +26,44 @@ jobs:
       - name: Generate settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          output_file: athena.xml
-          repositories: '[{ "id": "download-from-github-qubitpi", "url": "https://maven.pkg.github.com/qubitpi/athena" }]'
-          servers: '[{"id": "download-from-github-qubitpi", "username": "anybody", "password": "${{ secrets.DOWNLOAD_FROM_GITHUB_ARTIFACTORY }}"}]'
+          repositories: >
+            [
+              {
+                "id": "download-from-github-qubitpi",
+                "name": "Owner",
+                "url": "https://maven.pkg.github.com/qubitpi/owner",
+                "releases": {
+                  "enabled": "true"
+                },
+                "snapshots": {
+                  "enabled": "false"
+                }
+              },
+              {
+                "id": "github",
+                "url": "https://maven.pkg.github.com/qubitpi/aristotle",
+                "releases": {
+                  "enabled": "true"
+                },
+                "snapshots": {
+                  "enabled": "false"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "download-from-github-qubitpi",
+                "username": "anybody",
+                "password": "${{ secrets.DOWNLOAD_FROM_GITHUB_QUBITPI }}"
+              },
+              {
+                "id": "github",
+                "username": "QubitPi",
+                "password": "${{ secrets.PUBLISH_TO_ARTIFACTORY }}"
+              }
+            ]
       - name: Publish Package to GitHub Packages
-        run: mvn --batch-mode deploy --settings athena.xml
+        run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_TO_ARTIFACTORY }}

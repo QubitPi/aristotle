@@ -15,18 +15,16 @@
  */
 package com.qubitpi.aristotle.application;
 
-import com.qubitpi.athena.config.ErrorMessageFormat;
-import com.qubitpi.athena.config.SystemConfig;
-import com.qubitpi.athena.config.SystemConfigFactory;
+import com.qubitpi.aristotle.web.ErrorMessageFormat;
 
 import org.glassfish.hk2.utilities.Binder;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.ws.rs.ApplicationPath;
 
 /**
@@ -36,43 +34,44 @@ import javax.ws.rs.ApplicationPath;
 public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(ResourceConfig.class);
-
     private static final String ARISTOTLE_ENDPOINT_PACKAGE = "com.qubitpi.aristotle.web.endpoints";
 
-    private static final String RESOURCE_BINDER_KEY = "resource_binder";
-    private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
-
-    private final String bindingFactory = SYSTEM_CONFIG.getStringProperty(
-            SYSTEM_CONFIG.getPackageVariableName(RESOURCE_BINDER_KEY)
-    ).orElseThrow(() -> {
-        LOG.error(ErrorMessageFormat.CONFIG_NOT_FOUND.logFormat(RESOURCE_BINDER_KEY));
-        return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
-    });
+    private final ApplicationConfig applicationConfig;
 
     /**
      * DI Constructor.
+     *
+     * @param applicationConfigProvider  An injectable provider offering objects containing config values
      *
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
      * @throws IllegalAccessException if there was a problem accessing something due to security restrictions
      */
     @Inject
-    public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        final Class<? extends BinderFactory> binderClass = Class.forName(getBindingFactory())
+    public ResourceConfig(
+            final @NotNull Provider<ApplicationConfig> applicationConfigProvider
+    ) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        this.applicationConfig = applicationConfigProvider.get();
+
+        final String bindingFactory = getApplicationConfig().bindingFactory().orElseThrow(() -> {
+            LOG.error(ErrorMessageFormat.CONFIG_NOT_FOUND.logFormat("aristotle_resource_binder"));
+            return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
+        });
+
+        final Class<? extends BinderFactory> binderClass = Class.forName(bindingFactory)
                 .asSubclass(BinderFactory.class);
         final BinderFactory binderFactory = binderClass.newInstance();
         final Binder binder = binderFactory.buildBinder();
 
         packages(ARISTOTLE_ENDPOINT_PACKAGE);
         register(binder);
-        register(MultiPartFeature.class);
 
         // Call post-registration hook to allow for additional registration
         binderFactory.afterRegistration(this);
     }
 
     @NotNull
-    private String getBindingFactory() {
-        return bindingFactory;
+    private ApplicationConfig getApplicationConfig() {
+        return applicationConfig;
     }
 }

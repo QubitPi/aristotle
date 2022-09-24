@@ -2,12 +2,15 @@ name: Build
 
 on:
   workflow_call:
+    secrets:
+      DOWNLOAD_FROM_GITHUB_QUBITPI:
+        required: true
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
   build:
-    name: Build & Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,8 +23,28 @@ jobs:
       - name: Generate settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          repositories: '[{ "id": "download-from-github-qubitpi", "url": "https://maven.pkg.github.com/qubitpi/athena" }]'
-          servers: '[{"id": "download-from-github-qubitpi", "username": "anybody", "password": "${{ secrets.DOWNLOAD_FROM_GITHUB_ARTIFACTORY }}"}]'
+          repositories: >
+            [
+              {
+                "id": "download-from-github-qubitpi",
+                "name": "OWNER",
+                "url": "https://maven.pkg.github.com/qubitpi/owner",
+                "releases": {
+                  "enabled": "true"
+                },
+                "snapshots": {
+                  "enabled": "false"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "download-from-github-qubitpi",
+                "username": "anybody",
+                "password": "${{ secrets.DOWNLOAD_FROM_GITHUB_QUBITPI }}"
+              }
+            ]
       - name: Build
         run: |
           mvn -B clean verify

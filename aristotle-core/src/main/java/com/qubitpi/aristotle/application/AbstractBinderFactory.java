@@ -16,13 +16,9 @@
 package com.qubitpi.aristotle.application;
 
 import com.qubitpi.aristotle.graphstore.GraphStore;
-import com.qubitpi.athena.config.SystemConfig;
-import com.qubitpi.athena.config.SystemConfigFactory;
 
 import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -30,9 +26,6 @@ import jakarta.validation.constraints.NotNull;
  * {@link AbstractBinderFactory} implements standard buildBinder functionality.
  */
 public abstract class AbstractBinderFactory implements BinderFactory {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
-    private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
 
     @Override
     public Binder buildBinder() {

@@ -25,6 +25,12 @@ import java.util.Objects;
 public enum ErrorMessageFormat {
 
     /**
+     * When a {@link org.aeonbits.owner.Config} doesn't find a config key.
+     */
+    CONFIG_NOT_FOUND("Config error. Please check service log for details", "Config '%s' not found."),
+
+
+    /**
      * When a client request does not have a top-level selection "id" argument.
      *
      * For example, the query below does have a top ID argument of "2000"

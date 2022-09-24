@@ -15,9 +15,7 @@
  */
 package com.qubitpi.aristotle.application
 
-import com.qubitpi.athena.config.SystemConfig
-import com.qubitpi.athena.config.SystemConfigFactory
-
+import org.aeonbits.owner.ConfigFactory
 import org.glassfish.hk2.utilities.Binder
 
 import spock.lang.Specification
@@ -26,8 +24,7 @@ import java.util.function.Consumer
 
 class ResourceConfigSpec extends Specification {
 
-    static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance()
-    static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resource_binder")
+    static final String BINDER_KEY = "aristotle_resource_binder"
 
     static Binder binder // A mock representing the binder produced by the BinderFactory
     static Consumer clicker // A mock to arbitrarily accept events for testing
@@ -36,7 +33,7 @@ class ResourceConfigSpec extends Specification {
     Class<org.glassfish.jersey.server.ResourceConfig> resourceConfigClass
 
     def setup() {
-        SYSTEM_CONFIG.setProperty(BINDER_KEY, MockingBinderFactory.canonicalName)
+        System.setProperty(BINDER_KEY, MockingBinderFactory.canonicalName)
         clicker = Mock(Consumer)
         binder = Mock(Binder)
         resourceConfigClass = ResourceConfig
@@ -47,7 +44,7 @@ class ResourceConfigSpec extends Specification {
     def cleanup() {
         binder = null
         clicker = null
-        SYSTEM_CONFIG.clearProperty(BINDER_KEY)
+        System.clearProperty(BINDER_KEY)
     }
 
     static Binder getBinder() {
@@ -60,7 +57,7 @@ class ResourceConfigSpec extends Specification {
 
     def "Test instantiation triggers initialization and binding lifecycle"() {
         when:
-        ResourceConfig config = resourceConfigClass.newInstance() as ResourceConfig
+        ResourceConfig config = resourceConfigClass.newInstance(new ApplicationConfigProvider()) as ResourceConfig
 
         then:
         config.classes.containsAll(filters)
@@ -71,12 +68,18 @@ class ResourceConfigSpec extends Specification {
         1 * clicker.accept(_ as ResourceConfig)
     }
 
+    @SuppressWarnings('GroovyAccessibility')
     def "When binding factory is not found, error is thrown"() {
-        setup: "binder factory description config is removed"
-        SYSTEM_CONFIG.clearProperty(BINDER_KEY)
-
-        when: "resource config is constructed"
-        resourceConfigClass.newInstance()
+        when: "resource config is constructed while binder factory description config is removed"
+        resourceConfigClass.newInstance(
+                Mock(ApplicationConfigProvider) {
+                    get() >> {
+                        Mock(ApplicationConfig) {
+                            bindingFactory() >> Optional.empty()
+                        }
+                    }
+                }
+        )
 
         then: "error is thrown"
         thrown(IllegalStateException)
