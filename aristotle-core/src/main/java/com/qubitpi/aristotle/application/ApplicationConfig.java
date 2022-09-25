@@ -15,6 +15,8 @@
  */
 package com.qubitpi.aristotle.application;
 
+import static com.qubitpi.aristotle.application.ResourceConfig.RESOURCE_BINDER;
+
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Reloadable;
 
@@ -63,6 +65,6 @@ public interface ApplicationConfig extends Reloadable {
      * inside an {@link Optional} or {@link Optional#empty()} if the property key for this value does not exist
      */
     @NotNull
-    @Key("aristotle_resource_binder")
+    @Key(RESOURCE_BINDER)
     Optional<String> bindingFactory();
 }

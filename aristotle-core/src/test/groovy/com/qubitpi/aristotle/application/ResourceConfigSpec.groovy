@@ -73,7 +73,7 @@ class ResourceConfigSpec extends Specification {
 
     @SuppressWarnings('GroovyAccessibility')
     def "When binding factory is not found, error is thrown"() {
-        when: "resource config is constructed while binder factory description config is removed"
+        when: "resource config is constructed while binder factory class config is missing"
         resourceConfigClass.newInstance(
                 Mock(ApplicationConfigProvider) {
                     get() >> {

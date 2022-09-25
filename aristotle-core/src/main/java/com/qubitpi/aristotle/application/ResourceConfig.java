@@ -23,6 +23,8 @@ import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.ws.rs.ApplicationPath;
@@ -32,6 +34,12 @@ import javax.ws.rs.ApplicationPath;
  */
 @ApplicationPath("v1")
 public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
+
+    /**
+     * Config key whose value is a fully qualified classname that points to downstream app implementation of
+     * {@link AbstractBinderFactory}, for example, {@code "com.company.app.application.AppBinderFactory"}.
+     */
+    public static final String RESOURCE_BINDER = "aristotle_resource_binder";
 
     private static final Logger LOG = LoggerFactory.getLogger(ResourceConfig.class);
     private static final String ARISTOTLE_ENDPOINT_PACKAGE = "com.qubitpi.aristotle.web.endpoints";
@@ -46,15 +54,16 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
      * @throws IllegalAccessException if there was a problem accessing something due to security restrictions
+     * @throws NullPointerException if {@code applicationConfigProvider} is {@code null}
      */
     @Inject
     public ResourceConfig(
             final @NotNull Provider<ApplicationConfig> applicationConfigProvider
     ) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        this.applicationConfig = applicationConfigProvider.get();
+        this.applicationConfig = Objects.requireNonNull(applicationConfigProvider, "applicationConfigProvider").get();
 
         final String bindingFactory = getApplicationConfig().bindingFactory().orElseThrow(() -> {
-            LOG.error(ErrorMessageFormat.CONFIG_NOT_FOUND.logFormat("aristotle_resource_binder"));
+            LOG.error(ErrorMessageFormat.CONFIG_NOT_FOUND.logFormat(RESOURCE_BINDER));
             return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
         });
 

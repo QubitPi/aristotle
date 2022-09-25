@@ -27,7 +27,7 @@ public enum ErrorMessageFormat {
     /**
      * When a {@link org.aeonbits.owner.Config} doesn't find a config key.
      */
-    CONFIG_NOT_FOUND("Config error. Please check service log for details", "Config '%s' not found."),
+    CONFIG_NOT_FOUND("Config error. Please check service log for details.", "Config '%s' not found."),
 
 
     /**
@@ -60,8 +60,8 @@ public enum ErrorMessageFormat {
      * does not
      */
     TOP_ID_NOT_FOUND(
-            "Invalid GraphQL query. An 'id' argument with string value must exist in the first top selection",
-            "Visitor doesn't find target 'id' from '%s'"
+            "Invalid GraphQL query. An 'id' argument with string value must exist in the first top selection.",
+            "Visitor doesn't find target 'id' from '%s'."
     );
 
     private final String messageFormat;
