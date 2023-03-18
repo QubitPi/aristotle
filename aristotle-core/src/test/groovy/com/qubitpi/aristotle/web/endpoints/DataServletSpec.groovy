@@ -15,11 +15,31 @@
  */
 package com.qubitpi.aristotle.web.endpoints
 
+import com.qubitpi.aristotle.graphstore.GraphStore
+
 import graphql.language.Document
 import graphql.parser.Parser
 import spock.lang.Specification
 
 class DataServletSpec extends Specification {
+
+    GraphStore graphStore
+
+    DataServlet servlet
+
+    def "There is GraphQL-native endpoint which takes native GraphQL query and returns data in exactly the same native format"() {
+        setup:
+        graphStore = Mock(GraphStore) {
+            query(_ as String) >> {}
+        }
+        servlet = new DataServlet(graphStore)
+
+        when:
+        servlet.getData("")
+
+        then:
+        1 * graphStore.query(_ as String)
+    }
 
     @SuppressWarnings('GroovyAccessibility')
     def "The first root field argument 'id' value is extracted"() {

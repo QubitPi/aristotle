@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class TestGraphStore implements GraphStore {
 
     @Override
-    public JsonNode getGraph(final String id) {
+    public JsonNode query(final String nativeQuery) {
         return null;
     }
 }

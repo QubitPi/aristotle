@@ -6,7 +6,7 @@
 
     <groupId>com.qubitpi.aristotle</groupId>
     <artifactId>aristotle-parent-pom</artifactId>
-    <version>0.0.1</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>aristotle</name>
@@ -14,6 +14,8 @@
 
     <modules>
         <module>aristotle-core</module>
+        <module>aristotle-examples</module>
+        <module>aristotle-system-config</module>
     </modules>
 
     <developers>
@@ -44,33 +46,28 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
-        <version.aristotle>0.0.1</version.aristotle>
+        <version.aristotle>1.0-SNAPSHOT</version.aristotle>
         <version.validation.api>3.0.1</version.validation.api>
         <version.jcip.annotations>1.0</version.jcip.annotations>
         <version.slf4j>1.7.25</version.slf4j>
         <version.logback>1.2.3</version.logback>
         <version.graphql.java>14.0</version.graphql.java>
-        <version.arango.java.driver>6.18.0</version.arango.java.driver>
-        <version.joss>0.10.2</version.joss>
         <version.jackson>2.13.3</version.jackson>
-        <version.apache.commons>2.7</version.apache.commons>
-        <version.commons.dbcp2>2.0.1</version.commons.dbcp2>
-        <version.mysql.connector.java>5.1.38</version.mysql.connector.java>
-        <version.asynchttp>2.12.3</version.asynchttp>
-        <version.servlet>3.1.0</version.servlet>
-        <version.jersey>2.25.1</version.jersey>
-        <verszion.derby>10.11.1.1</verszion.derby>
+        <version.owner>1.1.2</version.owner>
+        <version.servlet>6.0.0</version.servlet>
+        <version.jersey>3.1.1</version.jersey>
+        <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
+        <version.groovy>4.0.6</version.groovy>
 
         <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
-        <version.maven.site.plugin>3.7.1</version.maven.site.plugin>
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
-        <version.maven.javadoc.plugin>3.2.0</version.maven.javadoc.plugin>
+        <version.maven.javadoc.plugin>3.5.0</version.maven.javadoc.plugin>
         <version.maven.jar.plugin>3.1.1</version.maven.jar.plugin>
-        <version.maven.surefire.plugin>2.16</version.maven.surefire.plugin>
+        <version.maven.surefire.plugin>3.0.0-M5</version.maven.surefire.plugin>
         <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
         <version.maven.failsafe.plugin>3.0.0-M4</version.maven.failsafe.plugin>
         <version.maven.checkstyle.plugin>3.1.2</version.maven.checkstyle.plugin>
@@ -79,7 +76,7 @@
         <checkstyle.skip>false</checkstyle.skip>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <checkstyle.suppressions.location>checkstyle-suppressions.xml</checkstyle.suppressions.location>
-        <checkstyle.version>8.12</checkstyle.version>
+        <checkstyle.version>8.30</checkstyle.version>
         <checkstyle.resourceIncludes>**/*.properties*</checkstyle.resourceIncludes>
     </properties>
 
@@ -93,15 +90,8 @@
             </dependency>
             <dependency>
                 <groupId>com.qubitpi.aristotle</groupId>
-                <artifactId>aristotle-graphstore</artifactId>
+                <artifactId>aristotle-system-config</artifactId>
                 <version>${version.aristotle}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.qubitpi.aristotle</groupId>
-                <artifactId>aristotle-core</artifactId>
-                <version>${version.aristotle}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
             </dependency>
 
             <!-- Validation -->
@@ -137,18 +127,6 @@
                 <version>${version.graphql.java}</version>
             </dependency>
 
-            <!-- Arango -->
-            <dependency>
-                <groupId>com.arangodb</groupId>
-                <artifactId>arangodb-java-driver</artifactId>
-                <version>${version.arango.java.driver}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.arangodb</groupId>
-                <artifactId>jackson-dataformat-velocypack</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-
             <!-- JSON Parsing -->
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
@@ -158,41 +136,23 @@
                 <type>pom</type>
             </dependency>
 
-            <!-- Apache Commons Libraries -->
+            <!-- Configurations -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-configuration2</artifactId>
-                <version>${version.apache.commons}</version>
-            </dependency>
-            <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-dbcp2</artifactId>
-                <version>${version.commons.dbcp2}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${version.mysql.connector.java}</version>
-            </dependency>
-
-            <!-- HTTP Client -->
-            <dependency>
-                <groupId>org.asynchttpclient</groupId>
-                <artifactId>async-http-client</artifactId>
-                <version>${version.asynchttp}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.asynchttpclient</groupId>
-                <artifactId>async-http-client-netty-utils</artifactId>
-                <version>${version.asynchttp}</version>
+                <groupId>org.aeonbits.owner</groupId>
+                <artifactId>owner</artifactId>
+                <version>${version.owner}</version>
             </dependency>
 
             <!-- Servlet API -->
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
                 <version>${version.servlet}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>3.1.0</version>
             </dependency>
 
             <!-- Jersey -->
@@ -231,27 +191,33 @@
 
             <!-- Injection -->
             <dependency>
-                <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2-api</artifactId>
-                <version>2.5.0-b32</version>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
-                <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
-                <version>1</version>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-locator</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.inject</groupId>
+                <artifactId>jakarta.inject-api</artifactId>
+                <version>2.0.1</version>
             </dependency>
 
             <!-- Testing -->
-            <dependency> <!-- Mandatory dependency for using Spock -->
+            <dependency>
                 <groupId>org.spockframework</groupId>
-                <artifactId>spock-core</artifactId>
-                <version>1.3-groovy-2.5</version>
-                <scope>test</scope>
+                <artifactId>spock-bom</artifactId>
+                <version>2.4-M1-groovy-4.0</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-all</artifactId>
-                <version>2.4.5</version>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>${version.groovy}</version>
             </dependency>
             <dependency> <!-- Enable mocking of non-interface types -->
                 <groupId>cglib</groupId>
@@ -282,11 +248,26 @@
                 <version>${version.flyway.core}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>spock</artifactId>
+                <version>1.18.0</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <!-- Common things that all modules need -->
     <dependencies>
+        <!-- Fix Jetty startup "WARNING: JAXBContext implementation could not be found. WADL feature is disabled" -->
+        <!-- This WARNING turns all endpoints into 404 -->
+        <!-- See https://stackoverflow.com/a/66198370 for more details -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
@@ -312,10 +293,11 @@
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
         </dependency>
         <dependency> <!-- Enable mocking of non-interface types -->
             <groupId>cglib</groupId>
@@ -337,7 +319,7 @@
                     <version>${version.maven.release.plugin}</version>
                 </plugin>
 
-                <!-- Use Java 8 -->
+                <!-- Use Java 11 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -373,22 +355,33 @@
                     </configuration>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.maven.javadoc.plugin}</version>
+                    <configuration>
+                        <doclint>none</doclint>  <!-- Turnoff all checks -->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <!-- Groovy Spock -->
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>2.1.0</version>
                     <executions>
                         <execution>
                             <goals>
-                                <goal>addSources</goal>
-                                <goal>addTestSources</goal>
-                                <goal>generateStubs</goal>
                                 <goal>compile</goal>
-                                <goal>generateTestStubs</goal>
                                 <goal>compileTests</goal>
-                                <goal>removeStubs</goal>
-                                <goal>removeTestStubs</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -460,20 +453,10 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${version.maven.javadoc.plugin}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${version.maven.site.plugin}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${version.maven.war.plugin}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -514,33 +497,25 @@
                 </executions>
             </plugin>
 
-            <!-- Mandatory plugins for using Spock -->
-            <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>add-groovy-sources</id>
-                    </execution>
-                    <execution>
-                        <id>compile-groovy</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile-groovy</id>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
+
+            <!-- Mandatory plugins for using Spock -->
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -583,7 +558,7 @@
                     <encoding>UTF-8</encoding>
                     <charset>UTF-8</charset>
                     <docencoding>UTF-8</docencoding>
-                    <additionalparam>-Xdoclint:none</additionalparam>
+                    <doclint>none</doclint>
 
                     <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
                     <!-- https://stackoverflow.com/a/28849620 -->
@@ -637,15 +612,9 @@
 
     <repositories>
         <repository>
-            <id>download-from-github-qubitpi</id>
-            <name>Download QubitPi's GitHub Packages</name>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <url>https://maven.pkg.github.com/QubitPi/athena</url>
+            <id>paion</id>
+            <name>Paion Data Official Release Repository</name>
+            <url>https://nexus.paion-data.dev/repository/maven-oss</url>
         </repository>
     </repositories>
 </project>

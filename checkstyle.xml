@@ -6,7 +6,15 @@
     <!-- Configuration - Filters -->
     <module name="SuppressWarningsFilter" />
 
-	<module name="TreeWalker">
+    <!-- Size Violations -->
+    <module name="LineLength">
+        <property name="ignorePattern" value="^import.*$"/>
+        <property name="max" value="120"/>
+        <property name="tabWidth" value="4"/>
+        <property name="severity" value="error"/>
+    </module>
+
+    <module name="TreeWalker">
 
         <!-- Filters -->
         <module name="SuppressWarningsHolder" />
@@ -17,7 +25,6 @@
 
         <!-- Annotations -->
         <module name="MissingDeprecated">
-            <property name="skipNoJavadoc" value="false" />
             <property name="severity" value="error"/>
         </module>
 
@@ -131,19 +138,11 @@
             <property name="severity" value="error"/>
         </module>
         <module name="JavadocMethod">
-            <property name="minLineCount" value="-1"/>
             <property name="allowedAnnotations" value="Override"/>
             <property name="validateThrows" value="true"/>
             <property name="scope" value="anoninner"/>
-            <property name="allowUndeclaredRTE" value="true"/>
-            <property name="allowThrowsTagsForSubclasses" value="true"/>
             <property name="allowMissingParamTags" value="false"/>
-            <property name="allowMissingThrowsTags" value="false"/>
             <property name="allowMissingReturnTag" value="false"/>
-            <property name="allowMissingJavadoc" value="false"/>
-            <property name="allowMissingPropertyJavadoc" value="true"/>
-            <property name="logLoadErrors" value="true"/>
-            <property name="suppressLoadErrors" value="false"/>
             <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF"/>
             <property name="severity" value="error"/>
         </module>
@@ -328,14 +327,6 @@
             <property name="severity" value="error"/>
         </module>
 
-        <!-- Size Violations -->
-        <module name="LineLength">
-            <property name="ignorePattern" value="^import.*$"/>
-            <property name="max" value="120"/>
-            <property name="tabWidth" value="4"/>
-            <property name="severity" value="error"/>
-        </module>
-
         <!-- Whitespace -->
         <module name="GenericWhitespace">
             <property name="severity" value="error"/>
@@ -381,7 +372,7 @@
             <property name="tokens" value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, DO_WHILE, EQUAL, GE, GT, LAMBDA, LAND, LCURLY, LE, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN, QUESTION, RCURLY, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN, LITERAL_ASSERT, TYPE_EXTENSION_AND"/>
             <property name="severity" value="error" />
         </module>
-	</module>
+    </module>
     <!-- Headers -->
     <module name="Header">
         <property name="header" value="/*\n * Copyright Jiaqi Liu"/>
@@ -390,9 +381,9 @@
     </module>
 
     <!-- Miscellaneous -->
-	<module name="NewlineAtEndOfFile">
-		<property name="severity" value="error"/>
-	</module>
+    <module name="NewlineAtEndOfFile">
+        <property name="severity" value="error"/>
+    </module>
     <module name="UniqueProperties">
         <property name="fileExtensions" value="properties" />
     </module>

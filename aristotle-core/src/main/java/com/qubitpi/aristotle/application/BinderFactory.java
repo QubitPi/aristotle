@@ -21,22 +21,29 @@ import jakarta.validation.constraints.NotNull;
 
 /**
  * A binder factory builds a custom binder for the Jersey application.
+ * <p>
+ * The factory makes the component object instance that will eventually be passed to
+ * {@link org.glassfish.jersey.server.ResourceConfig#register(Object)}.
  */
 public interface BinderFactory {
 
     /**
-     * Builds an hk2 Binder instance.
+     * Builds a hk2 Binder instance.
      * <p>
-     * This binder should bind all data dictionaries after loading them, as well as UI/NonUI web services and Health
-     * Check metrics
+     * This binder should bind all relevant resources, such as {@link com.qubitpi.aristotle.graphstore.GraphStore},
+     * for runtime dependency injection.
      *
-     * @return  a binder instance
+     * @return a binder instance that will be registered by putting as a parameter to
+     * {@link org.glassfish.jersey.server.ResourceConfig#register(Object)}
      */
     @NotNull
     Binder buildBinder();
 
     /**
      * Allows additional app-specific Jersey feature registration and config.
+     * <p>
+     * Specifically, this method will be invoked in {@link org.glassfish.jersey.server.ResourceConfig} constructor
+     * before its being dependency-injected into Jetty container.
      *
      * @param resourceConfig  Resource config to use for accessing the configuration
      */

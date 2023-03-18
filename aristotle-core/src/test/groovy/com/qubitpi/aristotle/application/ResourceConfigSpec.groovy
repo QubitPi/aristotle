@@ -15,8 +15,8 @@
  */
 package com.qubitpi.aristotle.application
 
-import com.qubitpi.athena.config.SystemConfig
-import com.qubitpi.athena.config.SystemConfigFactory
+import com.qubitpi.aristotle.config.SystemConfig
+import com.qubitpi.aristotle.config.SystemConfigFactory
 
 import org.glassfish.hk2.utilities.Binder
 
@@ -27,7 +27,7 @@ import java.util.function.Consumer
 class ResourceConfigSpec extends Specification {
 
     static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance()
-    static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resource_binder")
+    static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resourceBinder")
 
     static Binder binder // A mock representing the binder produced by the BinderFactory
     static Consumer clicker // A mock to arbitrarily accept events for testing
@@ -60,7 +60,7 @@ class ResourceConfigSpec extends Specification {
 
     def "Test instantiation triggers initialization and binding lifecycle"() {
         when:
-        ResourceConfig config = resourceConfigClass.newInstance() as ResourceConfig
+        ResourceConfig config = resourceConfigClass.getDeclaredConstructor().newInstance() as ResourceConfig
 
         then:
         config.classes.containsAll(filters)

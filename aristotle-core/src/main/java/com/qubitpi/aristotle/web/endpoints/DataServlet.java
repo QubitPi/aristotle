@@ -27,17 +27,19 @@ import graphql.language.Document;
 import graphql.language.NodeVisitor;
 import graphql.parser.Parser;
 import graphql.util.DefaultTraverserContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import net.jcip.annotations.Immutable;
 import net.jcip.annotations.ThreadSafe;
 
 import java.util.Objects;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Response;
 
 /**
  * Endpoint for POSTing and GETing graph data.
@@ -46,10 +48,11 @@ import javax.ws.rs.core.Response;
  * <a href="https://graphql.org/learn/serving-over-http/">GraphQL documentation</a> for specifications on serving
  * GraphQL over HTTP.
  */
+@Singleton
 @Immutable
 @ThreadSafe
-@Singleton
 @Path("/data/graphql")
+@Produces(MediaType.APPLICATION_JSON)
 public class DataServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataServlet.class);
@@ -77,15 +80,11 @@ public class DataServlet {
      *
      * @throws NullPointerException if {@code graphqlQuery} is {@code null}
      */
+    @GET
     public Response getData(@QueryParam("query") final String graphqlQuery) {
-        Objects.requireNonNull(graphqlQuery);
-
-        final Document document = Parser.parse(graphqlQuery);
-        final String rootFieldId = getRootEntityId(document);
-
         return Response
                 .status(Response.Status.OK)
-                .entity(getGraphStore().getGraph(rootFieldId))
+                .entity(getGraphStore().query(Objects.requireNonNull(graphqlQuery)))
                 .build();
     }
 
@@ -109,7 +108,8 @@ public class DataServlet {
      * </pre>
      * then this method returns "2000"
      *
-     * @param document  A programmable representation of the client's query, cannot be {@code null}
+     * @param document  A programmable representation of the client's query, cannot be {@code null}. It is usually
+     * obtained by {@link Parser#parse(String)}
      *
      * @return the search key
      *

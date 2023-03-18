@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
+    <parent>
+        <groupId>com.qubitpi.aristotle</groupId>
+        <artifactId>aristotle-parent-pom</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>aristotle-examples</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Aristotle: Aristotle Sample Applications</name>
+    <description>
+        Provides with some out-of-the-box examples as the starting point of using Aristotle
+    </description>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <modules>
+        <module>aristotle-examples-basic</module>
+    </modules>
+</project>

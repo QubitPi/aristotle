@@ -2,11 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
 
     <parent>
         <groupId>com.qubitpi.aristotle</groupId>
         <artifactId>aristotle-parent-pom</artifactId>
-        <version>0.0.1</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>aristotle-core</artifactId>
@@ -26,6 +29,11 @@
     </licenses>
 
     <dependencies>
+        <dependency>
+            <groupId>com.qubitpi.aristotle</groupId>
+            <artifactId>aristotle-system-config</artifactId>
+        </dependency>
+
         <!-- GraphQL -->
         <dependency>
             <groupId>com.graphql-java</groupId>
@@ -40,8 +48,12 @@
 
         <!-- Servlet API -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
 
         <!-- Jersey -->
@@ -73,19 +85,12 @@
 
         <!-- Injection -->
         <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.hk2</groupId>
-            <artifactId>hk2-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-        </dependency>
-
-        <!-- To be removed once OWNER supports Optional -->
-        <dependency>
-            <groupId>com.qubitpi.athena</groupId>
-            <artifactId>athena-system-config</artifactId>
-            <version>1.0.11</version>
+            <artifactId>hk2-locator</artifactId>
         </dependency>
     </dependencies>
 

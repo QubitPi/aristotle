@@ -15,19 +15,20 @@
  */
 package com.qubitpi.aristotle.application;
 
-import com.qubitpi.athena.config.ErrorMessageFormat;
-import com.qubitpi.athena.config.SystemConfig;
-import com.qubitpi.athena.config.SystemConfigFactory;
+import com.qubitpi.aristotle.config.ErrorMessageFormat;
+import com.qubitpi.aristotle.config.SystemConfig;
+import com.qubitpi.aristotle.config.SystemConfigFactory;
 
 import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.ApplicationPath;
 
-import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * The resource configuration for the Aristotle web applications.
@@ -36,11 +37,10 @@ import javax.ws.rs.ApplicationPath;
 public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(ResourceConfig.class);
-
-    private static final String ARISTOTLE_ENDPOINT_PACKAGE = "com.qubitpi.aristotle.web.endpoints";
-
-    private static final String RESOURCE_BINDER_KEY = "resource_binder";
     private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
+
+    private static final String RESOURCE_BINDER_KEY = "resourceBinder";
+    private static final String ARISTOTLE_ENDPOINT_PACKAGE = "com.qubitpi.aristotle.web.endpoints";
 
     private final String bindingFactory = SYSTEM_CONFIG.getStringProperty(
             SYSTEM_CONFIG.getPackageVariableName(RESOURCE_BINDER_KEY)
@@ -55,12 +55,17 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
      * @throws IllegalAccessException if there was a problem accessing something due to security restrictions
+     * @throws NoSuchMethodException in no-case
+     * @throws InvocationTargetException if an error occurs within {@link BinderFactory} constructor configured in
+     * downstream app
      */
     @Inject
-    public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public ResourceConfig()
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException,
+            InvocationTargetException {
         final Class<? extends BinderFactory> binderClass = Class.forName(getBindingFactory())
                 .asSubclass(BinderFactory.class);
-        final BinderFactory binderFactory = binderClass.newInstance();
+        final BinderFactory binderFactory = binderClass.getDeclaredConstructor().newInstance();
         final Binder binder = binderFactory.buildBinder();
 
         packages(ARISTOTLE_ENDPOINT_PACKAGE);

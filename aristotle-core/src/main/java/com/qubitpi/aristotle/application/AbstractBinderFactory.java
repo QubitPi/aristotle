@@ -16,24 +16,22 @@
 package com.qubitpi.aristotle.application;
 
 import com.qubitpi.aristotle.graphstore.GraphStore;
-import com.qubitpi.athena.config.SystemConfig;
-import com.qubitpi.athena.config.SystemConfigFactory;
 
 import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 /**
  * {@link AbstractBinderFactory} implements standard buildBinder functionality.
  */
+@Immutable
+@ThreadSafe
 public abstract class AbstractBinderFactory implements BinderFactory {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
-    private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
-
+    @NotNull
     @Override
     public Binder buildBinder() {
         return new AbstractBinder() {
@@ -47,24 +45,27 @@ public abstract class AbstractBinderFactory implements BinderFactory {
     }
 
     /**
-     * Registers graph data client.
+     * Returns an implementation class of {@link GraphStore} that will be bound as a Jersey resource.
      *
-     * @return a service for fetching graphs
+     * @return a {@link GraphStore} class type with implementation
      */
     @NotNull
     protected abstract Class<? extends GraphStore> buildGraphStore();
 
     @Override
-    public void afterRegistration(final ResourceConfig resourceConfig) {
+    public void afterRegistration(@NotNull final ResourceConfig resourceConfig) {
         // No-ops by default
     }
 
     /**
      * Allows additional app-specific binding.
+     * <p>
+     * Specifically, this method will be invoked at the end of {@link #buildBinder()} before the binder is passed to
+     * {@link org.glassfish.jersey.server.ResourceConfig} for resource binding.
      *
      * @param abstractBinder  Binder to use for binding
      */
-    protected void afterBinding(final @NotNull AbstractBinder abstractBinder) {
+    protected void afterBinding(@NotNull final AbstractBinder abstractBinder) {
         // No-ops by default
     }
 }
