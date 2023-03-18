@@ -37,7 +37,7 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
 
     /**
      * Config key whose value is a fully qualified classname that points to downstream app implementation of
-     * {@link AbstractBinderFactory}, for example, {@code "com.company.app.application.AppBinderFactory"}.
+     * {@link AbstractBinderFactory}; for example, {@code "com.company.app.application.AppBinderFactory"}.
      */
     public static final String RESOURCE_BINDER = "aristotle_resource_binder";
 

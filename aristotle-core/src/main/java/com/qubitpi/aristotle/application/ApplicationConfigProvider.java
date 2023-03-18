@@ -17,21 +17,25 @@ package com.qubitpi.aristotle.application;
 
 import org.aeonbits.owner.ConfigFactory;
 
+import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.Immutable;
 import net.jcip.annotations.ThreadSafe;
 
 import javax.inject.Provider;
 
 /**
- * Provides instance of {@link ApplicationConfig} for dependency injection.
+ * Provides singleton instance of {@link ApplicationConfig} for dependency injection.
  */
 @Immutable
 @ThreadSafe
 @javax.ws.rs.ext.Provider
 public class ApplicationConfigProvider implements Provider<ApplicationConfig> {
 
+    private static final ApplicationConfig INSTANCE = ConfigFactory.create(ApplicationConfig.class);
+
+    @NotNull
     @Override
     public ApplicationConfig get() {
-        return ConfigFactory.create(ApplicationConfig.class);
+        return INSTANCE;
     }
 }

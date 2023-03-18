@@ -28,8 +28,8 @@ import java.util.Optional;
  * {@link ApplicationConfig} an interface for retrieving configuration values, allowing for compile-time null-check and
  * decomposing module config into composite config sub-objects.
  * <p>
- * Downstream app should put their configuration properties in af file named "userConfig.properties". When this is done,
- * {@link ApplicationConfig} will load the properties from several sources in the follwoing order:
+ * Downstream app should put their configuration properties in a file called "userConfig.properties". When this is done,
+ * {@link ApplicationConfig} will load the properties from several sources in the following order:
  * <ol>
  *     <li> Load the given property from the
  *          <a href="https://docs.oracle.com/javase/tutorial/essential/environment/env.html">
