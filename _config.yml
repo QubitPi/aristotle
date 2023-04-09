@@ -1,0 +1,31 @@
+# landing page settings
+title: Aristotle
+description: Knowledge Graph as a GraphQL Service
+
+username: Aristotle
+user_description: A GraphQL Webservice Serving Knowledge Graph Data from Neo4J and Memgraph
+
+google-analytics:
+  id: ""
+
+# documentation page settings
+markdown: kramdown
+sass:
+  load_paths:
+    - _sass
+    - node_modules
+exclude: []
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  -
+    scope:
+      path: "node_modules/**"
+    values:
+      sitemap: false
+
+BASE_PATH: https://qubitpi.github.io/aristotle
+ASSET_PATH: /assets

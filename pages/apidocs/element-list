@@ -1,0 +1,7 @@
+com.qubitpi.aristotle.application
+com.qubitpi.aristotle.config
+com.qubitpi.aristotle.examples.basic.application
+com.qubitpi.aristotle.examples.basic.graphstore
+com.qubitpi.aristotle.graphstore
+com.qubitpi.aristotle.web
+com.qubitpi.aristotle.web.endpoints
