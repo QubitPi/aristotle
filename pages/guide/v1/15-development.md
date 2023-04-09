@@ -61,18 +61,18 @@ Major releases are often pre-released prior to the publication of the final vers
 Release Process
 ---------------
 
+1. [Comprehensively test][release test]
+2. [Build and push new release tag][release tag]
+5. Bump Aristotle version to the new release version
+6. Push Aristotle to [GitHub Packages][release packages]
+7. Publish [documentation](#messier-61-documentation) to GitHub Pages
+
 ### Documentations
 
 Javadoc will be auto-generated and placed under `docs/pages/apidocs/`, then github actions will push everything onto
 gh-pages branch
 
-1. [Comprehensively test](#testing)
-2. Fetch the tags from the adjusted remote
-3. Get the last tag on the working branch
-4. Build (`.github/upversion.py`) and push the new tag as the new release version.
-5. Bump Messier-61 version the new release version
-6. Push Messier-61 to [NPM registry][Messier-61 npm repo]
-7. Publish [documentation](#messier-61-documentation) to GitHub Pages
+
 
 ### Messier-61 Documentation
 
@@ -105,3 +105,7 @@ The output of both of the 2 steps above will be picked up and pushed to GitHub P
 [Jersey]: https://eclipse-ee4j.github.io/jersey/
 
 [semantic versioning]: https://semver.org/
+
+[release packages]: https://github.com/QubitPi?tab=packages&repo_name=aristotle
+[release tag]: https://github.com/QubitPi/aristotle/blob/initial-release/.github/tag-for-release.bash
+[release test]: https://github.com/QubitPi/aristotle/blob/master/.github/workflows/test.yml
