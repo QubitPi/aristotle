@@ -3,5 +3,3 @@ _site
 .idea/
 .DS_STORE
 .sass-cache
-node_modules
-!node_modules/bootstrap

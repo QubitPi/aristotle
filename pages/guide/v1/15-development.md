@@ -65,40 +65,21 @@ Release Process
 2. [Build and push new release tag][release tag]
 5. Bump Aristotle version to the new release version
 6. Push Aristotle to [GitHub Packages][release packages]
-7. Publish [documentation](#messier-61-documentation) to GitHub Pages
+7. Publish [documentation](#documentations) to GitHub Pages
 
 ### Documentations
-
-Javadoc will be auto-generated and placed under `docs/pages/apidocs/`, then github actions will push everything onto
-gh-pages branch
-
-
-
-### Messier-61 Documentation
 
 [GitHub Actions][GitHub Actions] allow us to automate, customize, and execute our software development workflows right
 in our repository. This also applies to our documentations.
 
-Messier-61 documentation source resides in the master branch under [docs/][Documentation source root] directory
+Aristotle documentation source resides in the master branch under [docs/][documentation source root] directory. When a
+pull request is merged to the `master` branch, Javadoc will be auto-generated and placed under `docs/pages/apidocs/`,
+then the entire [docs/][documentation source root] will be deployed to the `gh-pages` branch. After that, the new
+documentation will be served on the GitHub Pages site. This job is `deploy-documentation`.
 
-The CI/CD for documentation achieves 2 goals:
+[documentation source root]: https://github.com/QubitPi/aristotle/tree/master/docs
 
-1. When a new pull request is made to `master`, there's an action that ensures the site builds successfully, without
-   actually deploying. This GitHub workflow job is called `test-doc-build`.
-2. When a pull request is merged to the `master` branch, it will be built and deployed to the `gh-pages` branch. After
-   that, the new build output will be served on the GitHub Pages site. This job is `deploy-documentation` called deploy.
-
-:::info
-
-The documentation build is a 2-step process:
-
-1. A regular [Docusaurus `build`][Docusaurus Build] command that generates the static HTML of
-   [documentation site][documentation]
-2. An execution of TypeDoc Node API that generates the [Messier-61 API documentation][documentation on API]
-
-The output of both of the 2 steps above will be picked up and pushed to GitHub Pages for serving.
-
-:::
+[GitHub Actions]: https://docusaurus.io/docs/deployment#deploying-to-github-pages
 
 [HK2]: https://javaee.github.io/hk2/
 
