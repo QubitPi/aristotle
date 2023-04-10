@@ -39,13 +39,6 @@ recommended to fully build and install the project at least once:
 mvn clean install
 ```
 
-Thereafter, individual modules can be built whenever making changes to them. For example, the following command would 
-rebuild only aristotle-core:
-
-```bash
-mvn clean install -f aristotle-core
-```
-
 Pull requests and release builds leverage GitHub Action. PR builds simply run the complete build (`mvn -B clean verify`) 
 along with code coverage.
 
@@ -75,7 +68,7 @@ in our repository. This also applies to our documentations.
 Aristotle documentation source resides in the master branch under [docs/][documentation source root] directory. When a
 pull request is merged to the `master` branch, Javadoc will be auto-generated and placed under `docs/pages/apidocs/`,
 then the entire [docs/][documentation source root] will be deployed to the `gh-pages` branch. After that, the new
-documentation will be served on the GitHub Pages site. This job is `deploy-documentation`.
+documentation will be served on the GitHub Pages site. This job is `publish-documentation`.
 
 [documentation source root]: https://github.com/QubitPi/aristotle/tree/master/docs
 
