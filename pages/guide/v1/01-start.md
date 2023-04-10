@@ -77,3 +77,9 @@ Then issue the following query at `http://localhost:80/v1/data/graphql`:
 Our first working Aristotle query shows up!
 
 ![Error loading examples-basic-example-query.png](/athena/assets/images/examples-basic-example-query.png){:class="img-responsive"}
+
+### Troubleshooting
+
+If you see 404 query results, one possible place to look at is the Dockerfile version. We might need to upgrade it
+from `11.0.14-jdk11` to, for example, `12.0.0-jdk11` if its available. At the time of writing, `11.*.*.jdk11` is the
+latest working version for JDK 11.
