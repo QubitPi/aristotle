@@ -76,7 +76,7 @@ Then issue the following query at `http://localhost:80/v1/data/graphql`:
 
 Our first working Aristotle query shows up!
 
-![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png){:class="img-responsive"}
+![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png)
 
 ### Troubleshooting
 
