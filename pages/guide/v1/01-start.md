@@ -80,7 +80,9 @@ Then issue the following query at `http://localhost:80/v1/data/graphql`:
 
 Our first working Aristotle query shows up!
 
+<!-- markdown-link-check-disable -->
 ![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png)
+<!-- markdown-link-check-enable -->
 
 #### Troubleshooting
 

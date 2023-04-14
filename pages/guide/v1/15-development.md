@@ -70,8 +70,9 @@ pull request is merged to the `master` branch, Javadoc will be auto-generated an
 then the entire [docs/][documentation source root] will be deployed to the `gh-pages` branch. After that, the new
 documentation will be served on the GitHub Pages site. This job is `publish-documentation`.
 
+<!-- markdown-link-check-disable -->
 [documentation source root]: https://github.com/QubitPi/aristotle/tree/master/docs
-
+<!-- markdown-link-check-enable -->
 [GitHub Actions]: https://docusaurus.io/docs/deployment#deploying-to-github-pages
 
 [HK2]: https://javaee.github.io/hk2/
@@ -79,7 +80,8 @@ documentation will be served on the GitHub Pages site. This job is `publish-docu
 [Jersey]: https://eclipse-ee4j.github.io/jersey/
 
 [semantic versioning]: https://semver.org/
-
+<!-- markdown-link-check-disable -->
 [release packages]: https://github.com/QubitPi?tab=packages&repo_name=aristotle
-[release tag]: https://github.com/QubitPi/aristotle/blob/initial-release/.github/tag-for-release.bash
+[release tag]: https://github.com/QubitPi/aristotle/blob/master/.github/tag-for-release.bash
 [release test]: https://github.com/QubitPi/aristotle/blob/master/.github/workflows/test.yml
+<!-- markdown-link-check-enable -->

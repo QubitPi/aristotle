@@ -174,8 +174,7 @@ layout: doc-default
         <h4>Analytic Queries</h4>
         <p>
           Athena supports analytic queries against files crafted with its powerful semantic layer. Athena APIs work
-          natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your 
-          data.
+          natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your data.
         </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
