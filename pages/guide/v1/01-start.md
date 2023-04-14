@@ -46,8 +46,8 @@ cd aristotle/aristotle-examples/aristotle-examples-basic/
 docker build -t jack20191124/aristotle-examples-basic .
 ```
 
-Note that the Dockerfile base image is
-[11.0.14-jdk11](https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile). This particular version is chosen so that it works with JDK 11
+Note that the Dockerfile base image is [11.0.14-jdk11][Jetty 11.0.14-jdk11]. This particular version is chosen so that
+it works with JDK 11
 
 #### Standup a Container
 
@@ -86,3 +86,5 @@ Our first working Aristotle query shows up!
 If you see 404 query results, one possible place to look at is the Dockerfile version. We might need to upgrade it
 from `11.0.14-jdk11` to, for example, `12.0.0-jdk11` if its available. At the time of writing, `11.*.*.jdk11` is the
 latest working version for JDK 11.
+
+[Jetty 11.0.14-jdk11]: https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile
