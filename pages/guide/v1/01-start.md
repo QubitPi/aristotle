@@ -11,7 +11,7 @@ An API for Managing Knowledge Graph Data
 {:.no-toc}
 
 The easiest way to get started with Aristotle is to use the [Aristotle Basic App Starter][Aristotle Basic App Starter].
-The starter bundles all of the dependencies we will need to stand up the simplest Graph web service. We will deploy this 
+The starter bundles all of the dependencies we will need to stand up the simplest Graph web service. We will deploy this
 example locally.
 
 Contents
@@ -22,7 +22,7 @@ Contents
 ### Docker
 
 Aristotle Docker is a tool for setting up and running a full-fledged Aristotle instance Docker application. With Docker,
-an Aristotle application is started with a single command. **It's the quickest approach to get a taste of Aristotle**. 
+an Aristotle application is started with a single command. **It's the quickest approach to get a taste of Aristotle**.
 Aristotle Docker works in all environments: production, staging, development, testing, as well as CI workflows.
 
 ### Get Image

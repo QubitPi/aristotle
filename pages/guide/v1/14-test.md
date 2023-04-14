@@ -74,7 +74,7 @@ All test dependencies are defined in the [top-level POM file][top-level POM] by 
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <dependencies>
         <!-- Testing -->
         <dependency>
@@ -113,7 +113,7 @@ All test dependencies are defined in the [top-level POM file][top-level POM] by 
                         </execution>
                     </executions>
                 </plugin>
-                
+
                 <!-- Unite Test -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -225,7 +225,7 @@ def setup() {
     applicationState.metadataByFileId = ...
     applicationState.queryFormatter = ...
     applicationState.mutationFormatter = ...
-    
+
     ...
 }
 ```
@@ -316,7 +316,7 @@ Caused by: org.glassfish.jersey.server.model.ModelValidationException: Validatio
 
 Athena uses ResourceConfig type for configuration. We need to register the `MultiPartFeature`. Instead of using
 [Athena ResourceConfig](ResourceConfig), servlet test spec configures with the native
-[Jersey ResourceConfig](JerseyResourceConfig). The reason is so that we could bind certain resource classes that we only 
+[Jersey ResourceConfig](JerseyResourceConfig). The reason is so that we could bind certain resource classes that we only
 need in a test spec to enhance test efficiency.
 
 Athena ResourceConfig registers MultiPartFeature by default, whereas Jersey ResourceConfig does not. We could register
