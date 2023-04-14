@@ -197,7 +197,7 @@ All test dependencies are defined in the [top-level POM file][top-level POM] by 
 > ![Error loading dependency-analysis.png](/aristotle/assets/images/dependency-analysis.png){:class="img-responsive"}
 <!-- markdown-link-check-enable -->
 
-[BOM]: (https://qubitpi.github.io/jersey-guide/2022/09/05/maven-bom.html)
+[BOM]: https://qubitpi.github.io/jersey-guide/2022/09/05/maven-bom.html
 
 [Checkstyle]: http://checkstyle.sourceforge.net/
 
