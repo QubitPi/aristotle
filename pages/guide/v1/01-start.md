@@ -26,10 +26,9 @@ Aristotle Docker is a tool for setting up and running a full-fledged Aristotle i
 an Aristotle application is started with a single command. **It's the quickest approach to get a taste of Aristotle**.
 Aristotle Docker works in all environments: production, staging, development, testing, as well as CI workflows.
 
-### Get Image
----------
+#### Get Image
 
-### Docker Hub
+##### Docker Hub
 
 We can pull the image from [Docker Hub](https://hub.docker.com/r/jack20191124/hadoop/):
 
@@ -37,8 +36,7 @@ We can pull the image from [Docker Hub](https://hub.docker.com/r/jack20191124/ha
 docker pull jack20191124/aristotle-examples-basic:latest
 ```
 
-
-### GitHub
+##### GitHub
 
 We could also build the image from [source][Aristotle Basic App Starter]:
 
@@ -51,8 +49,7 @@ docker build -t jack20191124/aristotle-examples-basic .
 Note that the Dockerfile base image is
 [11.0.14-jdk11](https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile). This particular version is chosen so that it works with JDK 11
 
-Standup a Container
--------------------
+#### Standup a Container
 
 When image is on our machine (either by pulling or building), we can spin up the app instance using
 
@@ -60,7 +57,7 @@ When image is on our machine (either by pulling or building), we can spin up the
 docker run -it -p 80:8080 jack20191124/aristotle-examples-basic
 ```
 
-### Firing The First Request
+#### Firing The First Request
 
 Install [GraphiQL for Mac](https://github.com/skevy/graphiql-app)
 
@@ -84,7 +81,7 @@ Our first working Aristotle query shows up!
 
 ![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png)
 
-### Troubleshooting
+#### Troubleshooting
 
 If you see 404 query results, one possible place to look at is the Dockerfile version. We might need to upgrade it
 from `11.0.14-jdk11` to, for example, `12.0.0-jdk11` if its available. At the time of writing, `11.*.*.jdk11` is the
