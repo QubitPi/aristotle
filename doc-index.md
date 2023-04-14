@@ -105,7 +105,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Production Quality</h4>
         <p>
-          Quickly build and deploy production quality web services that expose your data as a service. Athena APIs 
+          Quickly build and deploy production quality web services that expose your data as a service. Athena APIs
           support complex filtering rules, sorting, and pagination.
         </p>
       </div>
@@ -139,7 +139,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Mobile Friendly</h4>
         <p>
-          Fetch entire object graphs in a single round trip. Subscribe to changes in your data model in realtime. Only 
+          Fetch entire object graphs in a single round trip. Subscribe to changes in your data model in realtime. Only
           requested elements of the file meta data are returned.</p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
@@ -172,7 +172,11 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Analytic Queries</h4>
-        <p>Athena supports analytic queries against files crafted with its powerful semantic layer.  Athena APIs work natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your data.</p>
+        <p>
+          Athena supports analytic queries against files crafted with its powerful semantic layer. Athena APIs work
+          natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your 
+          data.
+        </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
         <img src="assets/images/features/analytics-icon.png" class="img-fluid" alt="Features: Analytic Queries">
@@ -190,7 +194,10 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Open API</h4>
-        <p>Explore, understand, and compose queries against your Athena API through generated <a>Swagger</a> documentation or GraphQL schema.</p>
+        <p>
+          Explore, understand, and compose queries against your Athena API through generated <a>Swagger</a>
+          documentation or GraphQL schema.
+        </p>
       </div>
     </div>
     <div class="feature row align-items-center elbow">
@@ -223,7 +230,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Storage Agnostic</h4>
         <p>
-          Aristotle is agnostic to your particular persistence strategy. Use Swift/HDFS or provide your own 
+          Aristotle is agnostic to your particular persistence strategy. Use Swift/HDFS or provide your own
           implementation of a data store.
         </p>
       </div>
@@ -242,7 +249,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Open Source</h4>
         <p>
-          Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>. Released 
+          Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>. Released
           under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.
         </p>
       </div>

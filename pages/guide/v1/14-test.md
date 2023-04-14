@@ -13,7 +13,8 @@ Groovy Spock
 
 We're _big_ believers in testing our code, both for correctness, as well as to ensure that changes don't unintentionally
 break existing contracts unintentionally. For example, we rely heavily on the [Spock][Spock]
-framework for our backend service tests, and see a lot of benefit from it's conciseness, built-in [mocking framework][mocking framework], and the fact that it uses [Groovy][Groovy]. :smile:
+framework for our backend service tests, and see a lot of benefit from it's conciseness, built-in [mocking framework]
+[mocking framework], and the fact that it uses [Groovy][Groovy]. :smile:
 
 We also strive for very high-quality code, with the belief that quality code is easier to maintain, easier to
 understand, and has fewer bugs. To help keep the quality bar high. For instance we have an automated style checker
