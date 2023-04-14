@@ -23,10 +23,6 @@ layout: doc-default
 
 <hr class="mx-5">
 
-
-
-
-
 <div class="usage container my-3">
   <div class="text-center display-4 mb-2">How to use it</div>
   <div class="tab-content">

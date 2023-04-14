@@ -8,6 +8,7 @@ version: 1
 
 An API for Managing Knowledge Graph Data
 ----------------------------------------
+
 {:.no-toc}
 
 The easiest way to get started with Aristotle is to use the [Aristotle Basic App Starter][Aristotle Basic App Starter].
@@ -32,15 +33,20 @@ Aristotle Docker works in all environments: production, staging, development, te
 
 We can pull the image from [Docker Hub](https://hub.docker.com/r/jack20191124/hadoop/):
 
-    docker pull jack20191124/aristotle-examples-basic:latest
+```bash
+docker pull jack20191124/aristotle-examples-basic:latest
+```
+
 
 ### GitHub
 
 We could also build the image from [source][Aristotle Basic App Starter]:
 
-    git clone https://github.com/QubitPi/aristotle.git
-    cd aristotle/aristotle-examples/aristotle-examples-basic/
-    docker build -t jack20191124/aristotle-examples-basic .
+```bash
+git clone https://github.com/QubitPi/aristotle.git
+cd aristotle/aristotle-examples/aristotle-examples-basic/
+docker build -t jack20191124/aristotle-examples-basic .
+```
 
 Note that the Dockerfile base image is
 [11.0.14-jdk11](https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile). This particular version is chosen so that it works with JDK 11
