@@ -194,7 +194,7 @@ All test dependencies are defined in the [top-level POM file][top-level POM] by 
 >
 > We can check for conflicting transitive dependencies, for example, using dependency analyzer plugin in IntelliJ:
 >
-> ![Error loading dependency-analysis.png](/aristotle/assets/images/dependency-analysis.png){:class="img-responsive"}
+> ![Error loading dependency-analysis.png](/aristotle/assets/images/dependency-analysis.png){:class="img-fluid"}
 <!-- markdown-link-check-enable -->
 
 [BOM]: https://qubitpi.github.io/jersey-guide/2022/09/05/maven-bom.html
