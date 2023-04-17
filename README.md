@@ -21,8 +21,8 @@
 [![Reliability Rating][Sonar Reliability Rating]](https://sonarcloud.io/summary/new_code?id=QubitPi_aristotle)
 [![Technical Debt][Sonar Technical Debt]](https://sonarcloud.io/summary/new_code?id=QubitPi_aristotle)
 
-Aristotle is a Java library that lets you set up GraphQL webservice with minimal effort. Aristotle is meant to be
-specialized on querying knowledge graph data.
+Aristotle is a Java library that lets you set up **GraphQL** webservice with minimal effort. Aristotle is meant to be
+specialized on querying **knowledge graph** data.
 
 <a href="https://www.bilibili.com/video/BV1oU4y1P7yd">
     <img align="right" width="45%" alt="心海" src="https://github.com/QubitPi/QubitPi/blob/master/img/kokomi.png">

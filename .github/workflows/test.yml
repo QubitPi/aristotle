@@ -99,7 +99,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
-      - name:
+      - name: Install dependencies and build
         run: |
           bundle install
           bundle exec jekyll build
@@ -124,7 +124,7 @@ jobs:
           push: false
 
   release-documentation:
-    name: Deploy Documentation to GitHub Pages
+    name: Deploy Documentation (including Javadoc) to GitHub Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
