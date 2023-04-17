@@ -81,7 +81,6 @@
         <dependency> <!-- Jersey Test 'grizzly' container -->
             <groupId>org.glassfish.jersey.test-framework.providers</groupId>
             <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Injection -->
