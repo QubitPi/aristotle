@@ -31,7 +31,7 @@ Aristotle Docker works in all environments: production, staging, development, te
 
 ##### Docker Hub
 
-We can pull the image from [Docker Hub](https://hub.docker.com/r/jack20191124/hadoop/):
+We can pull the image from [Docker Hub](https://hub.docker.com/r/jack20191124/aristotle-examples-basic/):
 
 ```bash
 docker pull jack20191124/aristotle-examples-basic:latest
