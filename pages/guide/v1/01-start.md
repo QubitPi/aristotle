@@ -79,7 +79,7 @@ Then issue the following query at `http://localhost:80/v1/data/graphql`:
 Our first working Aristotle query shows up!
 
 <!-- markdown-link-check-disable -->
-![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png)
+![Error loading examples-basic-example-query.png](/aristotle/assets/images/examples-basic-example-query.png){:class="img-fluid"}
 <!-- markdown-link-check-enable -->
 
 #### Troubleshooting
