@@ -6,20 +6,18 @@ description: Getting Started
 version: 1
 ---
 
-An API for Managing Knowledge Graph Data
-----------------------------------------
-
-{:.no-toc}
-
-The easiest way to get started with Aristotle is to use the [Aristotle Basic App Starter][Aristotle Basic App Starter].
-The starter bundles all of the dependencies we will need to stand up the simplest Graph web service. We will deploy this
-example locally.
-
 Contents
 --------
 
 1. Contents
 {:toc}
+
+An API for Managing Knowledge Graph Data
+----------------------------------------
+
+The easiest way to get started with Aristotle is to use the [Aristotle Basic App Starter][Aristotle Basic App Starter].
+The starter bundles all of the dependencies we will need to stand up the simplest GraphQL web service. We will deploy 
+this example locally.
 
 ### Docker
 
@@ -90,4 +88,5 @@ If you see 404 query results, one possible place to look at is the Dockerfile ve
 from `11.0.14-jdk11` to, for example, `12.0.0-jdk11` if its available. At the time of writing, `11.*.*.jdk11` is the
 latest working version for JDK 11.
 
+[Aristotle Basic App Starter]: https://github.com/QubitPi/aristotle/tree/initial-release/aristotle-examples/aristotle-examples-basic
 [Jetty 11.0.14-jdk11]: https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile

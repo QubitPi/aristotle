@@ -6,8 +6,8 @@ layout: doc-default
   <div class="jumbotron">
     <div class="container text-center">
       <h2>
-        File <span class="text-primary">{json:api}</span> & Meta Data <span class="text-primary">GraphQL</span> web
-        services for file management
+        Model driven <span class="text-primary">{json:api}</span> & <span class="text-primary">GraphQL</span> web
+        services for knowledge graph
       </h2>
       <a href="pages/guide/v1/01-start.html">
         <button type="button" class="btn btn-primary text-light my-3">Get Started</button>
