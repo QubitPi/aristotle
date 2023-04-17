@@ -51,37 +51,8 @@ version components of `MAJOR.MINOR.PATCH`.
 Major releases are often pre-released prior to the publication of the final version.  Pre-releases have the format of
 `MAJOR.MINOR.PATCH-prCANDIDATE`.  For example, 5.0.0-pr2 is release candidate 2 of the Aristotle 5.0.0 version.
 
-Release Process
----------------
-
-1. [Comprehensively test][release test]
-2. [Build and push new release tag][release tag]
-5. Bump Aristotle version to the new release version
-6. Push Aristotle to [GitHub Packages][release packages]
-7. Publish [documentation](#documentations) to GitHub Pages
-
-### Documentations
-
-[GitHub Actions][GitHub Actions] allow us to automate, customize, and execute our software development workflows right
-in our repository. This also applies to our documentations.
-
-Aristotle documentation source resides in the master branch under [docs/][documentation source root] directory. When a
-pull request is merged to the `master` branch, Javadoc will be auto-generated and placed under `docs/pages/apidocs/`,
-then the entire [docs/][documentation source root] will be deployed to the `gh-pages` branch. After that, the new
-documentation will be served on the GitHub Pages site. This job is `publish-documentation`.
-
-<!-- markdown-link-check-disable -->
-[documentation source root]: https://github.com/QubitPi/aristotle/tree/master/docs
-<!-- markdown-link-check-enable -->
-[GitHub Actions]: https://docusaurus.io/docs/deployment#deploying-to-github-pages
-
 [HK2]: https://javaee.github.io/hk2/
 
 [Jersey]: https://eclipse-ee4j.github.io/jersey/
 
 [semantic versioning]: https://semver.org/
-<!-- markdown-link-check-disable -->
-[release packages]: https://github.com/QubitPi?tab=packages&repo_name=aristotle
-[release tag]: https://github.com/QubitPi/aristotle/blob/master/.github/tag-for-release.bash
-[release test]: https://github.com/QubitPi/aristotle/blob/master/.github/workflows/test.yml
-<!-- markdown-link-check-enable -->
