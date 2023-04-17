@@ -1,6 +1,7 @@
 <img align="right" width="30%" src="https://github.com/QubitPi/QubitPi/raw/master/img/aristotle/kokomi-2.png">
 
-## Changelog
+Changelog
+---------
 
 ### Added
 
@@ -14,7 +15,8 @@
 
 ### Security
 
-## Checklist
+Checklist
+---------
 
 * [ ] Test
 * [ ] Self-review

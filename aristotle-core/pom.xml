@@ -29,6 +29,7 @@
     </licenses>
 
     <dependencies>
+        <!-- Local module dependencies -->
         <dependency>
             <groupId>com.qubitpi.aristotle</groupId>
             <artifactId>aristotle-system-config</artifactId>
@@ -93,28 +94,4 @@
             <artifactId>hk2-locator</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/userConfig.properties</exclude>
-                        <exclude>**/applicationConfig.properties</exclude>
-                        <exclude>**/testApplicationConfig.properties</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>test-jar</id>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
