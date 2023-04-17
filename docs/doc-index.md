@@ -9,7 +9,7 @@ layout: doc-default
         File <span class="text-primary">{json:api}</span> & Meta Data <span class="text-primary">GraphQL</span> web
         services for file management
       </h2>
-      <a href="pages/guide/v1/01-welcome.html">
+      <a href="pages/guide/v1/01-start.html">
         <button type="button" class="btn btn-primary text-light my-3">Get Started</button>
       </a>
       <div class="mb-3">
@@ -88,7 +88,7 @@ layout: doc-default
   </div>
   <div class="text-center mt-5">
     <h2>Want to learn more?</h2>
-    <a href="pages/guide/v1/01-welcome.html">
+    <a href="pages/guide/v1/01-start.html">
       <button type="button" class="btn btn-primary text-light mb-2">Documentation</button>
     </a>
     <p>Or see our features below</p>
@@ -263,7 +263,7 @@ layout: doc-default
 <div class="container text-center my-5">
   <h2>Opinionated APIs for web & mobile</h2>
   <p>Improve the velocity and quality of your team's work.</p>
-  <a href="pages/guide/v1/01-welcome.html">
+  <a href="pages/guide/v1/01-start.html">
     <button type="button" class="btn btn-primary text-light">Get Started</button>
   </a>
 </div>
@@ -275,7 +275,7 @@ layout: doc-default
         <img src="assets/img/aristotle-white-logo.png" class="img-fluid" alt="Aristotle Logo" width="30%">
       </div>
       <div class="col-sm links">
-        <a href="pages/guide/v1/01-welcome.html">Documentation</a>
+        <a href="pages/guide/v1/01-start.html">Documentation</a>
         <a href="pages/license.html">Licensing</a>
       </div>
       <div class="col-sm links">

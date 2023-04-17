@@ -96,8 +96,32 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
       - name:
-        run: bundle exec jekyll build
+        run: |
+          bundle install
+          bundle exec jekyll build
+
+  build-aristotle-examples-basic-app-docker:
+    name: Test Build aristotle-example-basic App Docker Image
+    needs: [yaml-lint, markdown-lint, markdown-link-check]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build App WAR File
+        run: mvn clean package
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and Push
+        uses: docker/build-push-action@v3
+        with:
+          context: aristotle-examples/aristotle-examples-basic
+          push: false
 
   release-documentation:
     name: Deploy Documentation to GitHub Pages

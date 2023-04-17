@@ -32,7 +32,7 @@ class GraphQLFactorySpec extends Specification {
 
     def "Factory is able to load resource as a whole string from resource folder in the case of #description"() {
         expect:
-        GraphQLFactory.getGraphQLSchemaResourceAsString("test-schema.graphqls") == "This is a test file"
+        GraphQLFactory.getGraphQLSchemaResourceAsString("test-schema.graphqls") == "This is a test file\n"
     }
 
     def "File are in resource folder are not loadable"() {
