@@ -69,11 +69,14 @@ In order to compile the assets and run Jekyll on local you need to follow those 
 - Install dependencies: `yarn`
 - Run: `gulp`
 
-## License
+License
+-------
 
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme anyway you want.
+This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll 
+theme anyway you want.
 
-## Credits
+Credits
+-------
 
 This theme was partially designed with the inspiration from these fine folks
 - [Willian Justen](https://github.com/willianjusten/will-jekyll-template)
