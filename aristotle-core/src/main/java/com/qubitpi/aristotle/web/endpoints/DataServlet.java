@@ -45,8 +45,8 @@ import java.util.Objects;
  * Endpoint for POSTing and GETing graph data.
  * <p>
  * This is the resource that serves GraphQL over HTTP. See
- * <a href="https://graphql.org/learn/serving-over-http/">GraphQL documentation</a> for specifications on serving
- * GraphQL over HTTP.
+ * <a href="https://qubitpi.github.io/graphql.github.io/learn/serving-over-http/">GraphQL documentation</a> for
+ * specifications on serving GraphQL over HTTP.
  */
 @Singleton
 @Immutable
@@ -60,11 +60,11 @@ public class DataServlet {
     private final GraphStore graphStore;
 
     /**
-     * DI constructor.
+     * Constructor for dependency injection.
      *
-     * @param graphStore  A delegating layer that handles all REST operations.
+     * @param graphStore  An abstraction layer that handles all GraphQL queries
      *
-     * @throws NullPointerException if any argument is {@code null}
+     * @throws NullPointerException if {@code graphStore} is {@code null}
      */
     @Inject
     public DataServlet(@NotNull final GraphStore graphStore) {
@@ -72,7 +72,10 @@ public class DataServlet {
     }
 
     /**
-     * Query graph data via GraphQL GET.
+     * The standard HTTP GET method that handles GraphQL queries.
+     * <p>
+     * See <a href="https://qubitpi.github.io/graphql.github.io/learn/serving-over-http/">GraphQL documentation</a> for
+     * specifications on serving GraphQL over HTTP.
      *
      * @param graphqlQuery  A native GraphQL query operation definition, such as "query={user{name}}"
      *
@@ -81,6 +84,7 @@ public class DataServlet {
      * @throws NullPointerException if {@code graphqlQuery} is {@code null}
      */
     @GET
+    @NotNull
     public Response getData(@QueryParam("query") final String graphqlQuery) {
         return Response
                 .status(Response.Status.OK)
