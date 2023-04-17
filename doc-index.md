@@ -13,7 +13,7 @@ layout: doc-default
         <button type="button" class="btn btn-primary text-light my-3">Get Started</button>
       </a>
       <div class="mb-3">
-        <img src="assets/img/aristotle-illustration.png" class="img-fluid athena-illustration" alt="Athena Illustration">
+        <img src="assets/img/aristotle-illustration.png" class="img-fluid aristotle-illustration" alt="Aristotle Illustration">
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@ layout: doc-default
 
 <div class="container text-center my-5">
   <img src="assets/img/aristotle-logo.png" class="img-fluid mb-3" alt="Aristotle Logo" width="20%">
-  <h4 class="mx-2">Athena is a Java library that lets you setup object storage webservice with minimal effort.</h4>
+  <h4 class="mx-2">Aristotle is a Java library that lets you set up Knowledge Graph GraphQL webservice with minimal effort</h4>
 </div>
 
 <hr class="mx-5">
@@ -40,15 +40,15 @@ layout: doc-default
       <div class="feature row align-items-center my-4">
         <div class="col-sm">
           <div class="mr-3">
-            <h4>2. Pickup a File Store</h4>
+            <h4>2. Pickup a Graph Store</h4>
             <p>
-              Choose either Swift or HDFS file store that Athena already offered for you or implement a custom file
-              store against any arbitrary database as file storage
+              Choose either Neo4J or Memgraph file store that Aristotle already offered for you or implement a custom 
+              graph store against any arbitrary database as graph data storage
             </p>
           </div>
         </div>
         <div class="col-sm">
-          <img src="assets/img/editor/filestore.png" class="img-fluid" alt="Editor: File Store">
+          <img src="assets/img/editor/graphstore.png" class="img-fluid" alt="Editor: File Store">
         </div>
       </div>
       <div class="feature row align-items-center my-4">
@@ -105,7 +105,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Production Quality</h4>
         <p>
-          Quickly build and deploy production quality web services that expose your data as a service. Athena APIs
+          Quickly build and deploy production quality web services that expose your data as a service. Aristotle API's
           support complex filtering rules, sorting, and pagination.
         </p>
       </div>
@@ -157,7 +157,7 @@ layout: doc-default
       </div>
       <div class="col-sm my-3 my-sm-0">
         <h4>Single Atomic Request</h4>
-        <p>Athena supports multiple data model mutations in a single request in GraphQL.</p>
+        <p>Aristotle supports multiple data model mutations in a single request in GraphQL.</p>
       </div>
     </div>
     <div class="feature row align-items-center elbow">
@@ -173,8 +173,9 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Analytic Queries</h4>
         <p>
-          Athena supports analytic queries against files crafted with its powerful semantic layer. Athena APIs work
-          natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on your data.
+          Aristotle supports analytic queries against files crafted with its powerful semantic layer. Aristotle API's 
+          work natively with <a href="https://github.com/yahoo/fili">Fili</a> to visualize, explore, and report on 
+          your data.
         </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
@@ -194,7 +195,7 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Open API</h4>
         <p>
-          Explore, understand, and compose queries against your Athena API through generated <a>Swagger</a>
+          Explore, understand, and compose queries against your Aristotle API through generated <a>Swagger</a>
           documentation or GraphQL schema.
         </p>
       </div>
@@ -248,8 +249,8 @@ layout: doc-default
       <div class="col-sm my-3 my-sm-0">
         <h4>Open Source</h4>
         <p>
-          Athena is 100% open source and available on <a href="https://github.com/QubitPi/athena">Github</a>. Released
-          under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.
+          Aristotle is 100% open source and available on <a href="https://github.com/QubitPi/aristotle">Github</a>. 
+          Released under the commercial-friendly <a href="pages/license.html">Apache License, Version 2.0</a>.
         </p>
       </div>
       <div class="col-sm text-right d-none d-sm-block">
@@ -282,10 +283,10 @@ layout: doc-default
         <a href="https://discord.com/widget?id=1001320502960324658&theme=dark">Community</a>
       </div>
       <div class="col-sm links">
-        <a href="https://github.com/QubitPi?tab=packages&repo_name=athena">Releases</a>
+        <a href="https://github.com/QubitPi?tab=packages&repo_name=aristotle">Releases</a>
       </div>
       <div class="col-sm">
-        <a href="https://github.com/QubitPi/athena">
+        <a href="https://github.com/QubitPi/aristotle">
           <button type="button" class="btn btn-secondary github">
             <img src="assets/images/GitHub-Mark-Light-32px.png" class="img-fluid" alt="Github Logo">
             <span>Github</span>
