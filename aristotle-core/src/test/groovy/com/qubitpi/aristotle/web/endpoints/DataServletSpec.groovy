@@ -27,7 +27,7 @@ class DataServletSpec extends Specification {
 
     DataServlet servlet
 
-    def "There is GraphQL-native endpoint which takes native GraphQL query and returns data in exactly the same native format"() {
+    def "GET delegates to graph store for all GraphQL operations"() {
         setup:
         graphStore = Mock(GraphStore) {
             query(_ as String) >> {}

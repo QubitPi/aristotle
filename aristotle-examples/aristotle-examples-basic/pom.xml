@@ -15,7 +15,7 @@
     <packaging>war</packaging>
 
     <name>Aristotle: Basic Application</name>
-    <description>Aristotle works by providing GraphQL API object</description>
+    <description>A basic application that requires minimum configuration to standup an Aristotle instance</description>
 
     <dependencies>
         <!-- Local module dependencies -->
@@ -40,26 +40,14 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>11.0.14</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-            <version>11.0.14</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.3.0</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.groovy</groupId>
-                    <artifactId>groovy</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

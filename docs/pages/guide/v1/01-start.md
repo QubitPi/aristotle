@@ -46,7 +46,7 @@ docker build -t jack20191124/aristotle-examples-basic .
 ```
 
 Note that the Dockerfile base image is [11.0.14-jdk11][Jetty 11.0.14-jdk11]. This particular version is chosen so that
-it works with JDK 11
+it works with JDK 11. [11.0.14-jdk11][Jetty 11.0.14-jdk11] is also the minimum working version known for JDK 11. 
 
 #### Standup a Container
 
@@ -92,3 +92,22 @@ latest working version for JDK 11.
 [Aristotle Basic App Starter]: https://github.com/QubitPi/aristotle/tree/master/aristotle-examples/aristotle-examples-basic
 <!-- markdown-link-check-enable -->
 [Jetty 11.0.14-jdk11]: https://github.com/eclipse/jetty.docker/blob/7cb88c382621890d7fb8d02267e78ae5e7c2d719/eclipse-temurin/11.0/jdk11/Dockerfile
+
+### Extending Docker Application
+
+Happy with Aristotle? You can go further with productionizing Aristotle from here
+
+#### Configuration
+
+If we put our config file into a subfolder of `src/main/resources`, it is important to tell Maven to add those
+resources to classpath so that our SystemConfig module could read all downstream configuration value from properties
+file. For instance
+
+```xml
+<resources>
+    <resource>
+        <directory>src/main/resources</directory>
+    </resource>
+</resources>
+```
+
