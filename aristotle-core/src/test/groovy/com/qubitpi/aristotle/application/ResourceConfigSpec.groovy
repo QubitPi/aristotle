@@ -15,19 +15,20 @@
  */
 package com.qubitpi.aristotle.application
 
-import com.qubitpi.athena.config.SystemConfig
-import com.qubitpi.athena.config.SystemConfigFactory
+import com.qubitpi.aristotle.config.SystemConfig
+import com.qubitpi.aristotle.config.SystemConfigFactory
 
 import org.glassfish.hk2.utilities.Binder
 
 import spock.lang.Specification
 
+import java.lang.reflect.InvocationTargetException
 import java.util.function.Consumer
 
 class ResourceConfigSpec extends Specification {
 
     static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance()
-    static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resource_binder")
+    static final String BINDER_KEY = SYSTEM_CONFIG.getPackageVariableName("resourceBinder")
 
     static Binder binder // A mock representing the binder produced by the BinderFactory
     static Consumer clicker // A mock to arbitrarily accept events for testing
@@ -59,10 +60,10 @@ class ResourceConfigSpec extends Specification {
     }
 
     def "Test instantiation triggers initialization and binding lifecycle"() {
-        when:
-        ResourceConfig config = resourceConfigClass.newInstance() as ResourceConfig
+        when: "a resource config is created"
+        ResourceConfig config = resourceConfigClass.getDeclaredConstructor().newInstance() as ResourceConfig
 
-        then:
+        then: "binder executes"
         config.classes.containsAll(filters)
         config.getInstances().contains(binder)
 
@@ -76,9 +77,9 @@ class ResourceConfigSpec extends Specification {
         SYSTEM_CONFIG.clearProperty(BINDER_KEY)
 
         when: "resource config is constructed"
-        resourceConfigClass.newInstance()
+        resourceConfigClass.getDeclaredConstructor().newInstance()
 
-        then: "error is thrown"
-        thrown(IllegalStateException)
+        then: "new instance cannot be constructed"
+        thrown(InvocationTargetException)
     }
 }

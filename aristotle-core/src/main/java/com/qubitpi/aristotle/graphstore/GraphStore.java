@@ -20,20 +20,25 @@ import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * A {@link GraphStore} is an abstractin layer between servlet and graph data client.
+ * A {@link GraphStore} is an abstraction layer between Aristotle's application layer and the sea of graph data.
+ *
+ * {@link GraphStore} is COMPLETELY agnostic of business logics, which means it DOES NOT implement any filtering,
+ * authentication/authorization, or pagination (unless the query itself is paginated).
+ *
+ * This is a {@link java.util.function functional interface} whose functional method is {@link #query(String)}.
  */
 @FunctionalInterface
 public interface GraphStore {
 
     /**
-     * Query graph by top selection argument ID.
+     * Queries graph using a native GraphQL query.
      *
-     * @param id  top selection ID
+     * @param nativeQuery  A standard GraphQL query
      *
      * @return a complete graph ready to be returned to client as JSON
      *
-     * @throws NullPointerException if {@code id} is {@code null}
+     * @throws NullPointerException if {@code nativeQuery} is {@code null}
      */
     @NotNull
-    JsonNode getGraph(@NotNull String id);
+    JsonNode query(@NotNull String nativeQuery);
 }
