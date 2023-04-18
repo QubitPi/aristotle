@@ -27,7 +27,7 @@ import java.util.Objects;
 
 /**
  * {@link BasicGraphStore} shows that to have a full-fledged knowledge-graph service running, we only need to implement
- * our own {@link GraphStore} to make it running.
+ * a {@link GraphStore}.
  */
 public class BasicGraphStore implements GraphStore {
 
@@ -48,7 +48,7 @@ public class BasicGraphStore implements GraphStore {
      *
      * @param api  The native GraphQL API object to delegate queries for.
      *
-     * @throws NullPointerException if {@code  api} is {@code null}
+     * @throws NullPointerException if {@code api} is {@code null}
      */
     private BasicGraphStore(@NotNull final GraphQL api) {
         this.api = Objects.requireNonNull(api, "api");

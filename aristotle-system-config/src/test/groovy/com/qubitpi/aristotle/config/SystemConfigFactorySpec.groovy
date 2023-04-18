@@ -22,12 +22,12 @@ class SystemConfigFactorySpec extends SystemConfigSpec {
         return SystemConfigFactory.getInstance()
     }
 
-    @SuppressWarnings("GroovyAccessibility")
+    @SuppressWarnings(["GroovyAccessibility", 'GroovyResultOfObjectAllocationIgnored'])
     def "Factory is not instantiable"() {
-        when:
+        when: "factory constructor is called"
         new SystemConfigFactory()
 
-        then:
+        then: "error is thrown"
         thrown(AssertionError)
 
     }

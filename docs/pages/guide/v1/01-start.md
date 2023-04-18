@@ -46,7 +46,7 @@ docker build -t jack20191124/aristotle-examples-basic .
 ```
 
 Note that the Dockerfile base image is [11.0.14-jdk11][Jetty 11.0.14-jdk11]. This particular version is chosen so that
-it works with JDK 11. [11.0.14-jdk11][Jetty 11.0.14-jdk11] is also the minimum working version known for JDK 11. 
+it works with JDK 11. [11.0.14-jdk11][Jetty 11.0.14-jdk11] is also the minimum working version known for JDK 11.
 
 #### Standup a Container
 
@@ -110,4 +110,3 @@ file. For instance
     </resource>
 </resources>
 ```
-

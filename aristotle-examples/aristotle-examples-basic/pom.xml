@@ -17,6 +17,14 @@
     <name>Aristotle: Basic Application</name>
     <description>A basic application that requires minimum configuration to standup an Aristotle instance</description>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <dependencies>
         <!-- Local module dependencies -->
         <dependency>

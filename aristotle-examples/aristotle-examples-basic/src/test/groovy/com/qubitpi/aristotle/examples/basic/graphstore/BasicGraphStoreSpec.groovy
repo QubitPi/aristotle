@@ -47,10 +47,10 @@ class BasicGraphStoreSpec extends Specification {
     }
 
     def "Querying the store delegates everything to native GraphQL API"() {
-        when:
+        when: "graph store is queried"
         basicGraphStore.query(QUERY)
 
-        then:
+        then: "the store delegates query to native API"
         1 * queryDelegate.execute(QUERY) >> mockedExecutionResult
     }
 }

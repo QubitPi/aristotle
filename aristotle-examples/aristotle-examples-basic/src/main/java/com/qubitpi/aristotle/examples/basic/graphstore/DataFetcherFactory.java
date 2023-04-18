@@ -15,9 +15,6 @@
  */
 package com.qubitpi.aristotle.examples.basic.graphstore;
 
-import static java.util.AbstractMap.SimpleImmutableEntry;
-import static java.util.Map.Entry;
-
 import graphql.schema.DataFetcher;
 import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.Immutable;
@@ -26,8 +23,6 @@ import net.jcip.annotations.ThreadSafe;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * A sanity-check data fetcher factory that defines some demo data for querying.
@@ -49,7 +44,7 @@ public class DataFetcherFactory {
     public static final List<String> BOOK_IDS = Arrays.asList("book-1", "book-2", "book-3");
 
     /**
-     * All queryable author ID's.
+     * All linked/sub-query author ID's.
      */
     public static final List<String> AUTHOR_IDS = Arrays.asList("author-1", "author-2", "author-3");
 
@@ -61,42 +56,42 @@ public class DataFetcherFactory {
     private static final String LAST_NAME = "lastName";
 
     private static final List<Map<String, String>> BOOKS = Arrays.asList(
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, BOOK_IDS.get(0)),
-                    new SimpleImmutableEntry<>(NAME, "Harry Potter and the Philosopher's Stone"),
-                    new SimpleImmutableEntry<>(PAGE_COUNT, "223"),
-                    new SimpleImmutableEntry<>(AUTHOR_ID, AUTHOR_IDS.get(0))
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue)),
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, BOOK_IDS.get(1)),
-                    new SimpleImmutableEntry<>(NAME, "Moby Dick"),
-                    new SimpleImmutableEntry<>(PAGE_COUNT, "635"),
-                    new SimpleImmutableEntry<>(AUTHOR_ID, AUTHOR_IDS.get(1))
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue)),
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, BOOK_IDS.get(2)),
-                    new SimpleImmutableEntry<>(NAME, "Interview with the vampire"),
-                    new SimpleImmutableEntry<>(PAGE_COUNT, "371"),
-                    new SimpleImmutableEntry<>(AUTHOR_ID, AUTHOR_IDS.get(2))
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
+            Map.of(
+                    ID, BOOK_IDS.get(0),
+                    NAME, "Harry Potter and the Philosopher's Stone",
+                    PAGE_COUNT, "223",
+                    AUTHOR_ID, AUTHOR_IDS.get(0)
+            ),
+            Map.of(
+                    ID, BOOK_IDS.get(1),
+                    NAME, "Moby Dick",
+                    PAGE_COUNT, "635",
+                    AUTHOR_ID, AUTHOR_IDS.get(1)
+            ),
+            Map.of(
+                    ID, BOOK_IDS.get(2),
+                    NAME, "Interview with the vampire",
+                    PAGE_COUNT, "371",
+                    AUTHOR_ID, AUTHOR_IDS.get(2)
+            )
     );
 
     private static final List<Map<String, String>> AUTHORS = Arrays.asList(
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, AUTHOR_IDS.get(0)),
-                    new SimpleImmutableEntry<>(FIRST_NAME, "Joanne"),
-                    new SimpleImmutableEntry<>(LAST_NAME, "Rowling")
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue)),
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, AUTHOR_IDS.get(1)),
-                    new SimpleImmutableEntry<>(FIRST_NAME, "Herman"),
-                    new SimpleImmutableEntry<>(LAST_NAME, "Melville")
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue)),
-            Stream.of(
-                    new SimpleImmutableEntry<>(ID, AUTHOR_IDS.get(2)),
-                    new SimpleImmutableEntry<>(FIRST_NAME, "Anne"),
-                    new SimpleImmutableEntry<>(LAST_NAME, "Rice")
-            ).collect(Collectors.toMap(Entry::getKey, Entry::getValue))
+            Map.of(
+                    ID, AUTHOR_IDS.get(0),
+                    FIRST_NAME, "Joanne",
+                    LAST_NAME, "Rowling"
+            ),
+            Map.of(
+                    ID, AUTHOR_IDS.get(1),
+                    FIRST_NAME, "Herman",
+                    LAST_NAME, "Melville"
+            ),
+            Map.of(
+                    ID, AUTHOR_IDS.get(2),
+                    FIRST_NAME, "Anne",
+                    LAST_NAME, "Rice"
+            )
     );
 
     private static final DataFetcher<Map<String, String>> BOOK_DATA_FETCHER = dataFetchingEnvironment -> {

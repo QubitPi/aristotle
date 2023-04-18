@@ -35,7 +35,7 @@ class GraphQLFactorySpec extends Specification {
         GraphQLFactory.getGraphQLSchemaResourceAsString("test-schema.graphqls") == "This is a test file\n"
     }
 
-    def "File are in resource folder are not loadable"() {
+    def "File not in resource folder are not loadable"() {
         when: "a file not in resource path is triing to be loaded"
         GraphQLFactory.getGraphQLSchemaResourceAsString("non-existing")
 

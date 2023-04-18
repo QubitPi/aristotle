@@ -68,9 +68,10 @@ public final class JettyServerFactory {
      * }
      * </pre>
      *
-     * The {@code @ApplicationPath("v1")} annotation is not taking any effects. We must somehow prefix "v1" either at
-     * endpoint resource (such as {@code @Path("/v1/...")}) or completely remove "v1" in test request path. Which
-     * option to choose makes no difference.
+     * The {@code @ApplicationPath("v1")} annotation is
+     * <a href="https://github.com/eclipse-ee4j/jersey/issues/3222">not taking any effects</a>. We must somehow prefix
+     * "v1" either at endpoint resource (such as {@code @Path("/v1/...")}) or completely remove "v1" in test request
+     * path. Which option to choose makes no difference.
      *
      * @return the embedded Jetty server for local testing purposes
      *

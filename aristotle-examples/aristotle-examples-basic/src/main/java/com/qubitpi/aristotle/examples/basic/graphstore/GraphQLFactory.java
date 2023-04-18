@@ -35,7 +35,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * {@link GraphQLFactory} is loaded statically and is, therefore, thread-safe.
+ * {@link GraphQLFactory} produces native GraphQL API.
  */
 @Immutable
 @ThreadSafe
