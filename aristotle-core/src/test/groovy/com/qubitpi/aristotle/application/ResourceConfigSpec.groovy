@@ -60,10 +60,10 @@ class ResourceConfigSpec extends Specification {
     }
 
     def "Test instantiation triggers initialization and binding lifecycle"() {
-        when:
+        when: "a resource config is created"
         ResourceConfig config = resourceConfigClass.getDeclaredConstructor().newInstance() as ResourceConfig
 
-        then:
+        then: "binder executes"
         config.classes.containsAll(filters)
         config.getInstances().contains(binder)
 

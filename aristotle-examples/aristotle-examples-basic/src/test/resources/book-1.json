@@ -1,0 +1,10 @@
+{
+    "id": "book-1",
+    "name": "Harry Potter and the Philosopher's Stone",
+    "pageCount": 223,
+    "author": {
+        "id": "author-1",
+        "firstName": "Joanne",
+        "lastName": "Rowling"
+    }
+}

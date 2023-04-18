@@ -36,6 +36,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.Immutable;
 import net.jcip.annotations.ThreadSafe;
 
@@ -57,6 +58,7 @@ public class DataServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataServlet.class);
 
+    @GuardedBy("this")
     private final GraphStore graphStore;
 
     /**
@@ -73,11 +75,9 @@ public class DataServlet {
 
     /**
      * The standard HTTP GET method that handles GraphQL queries.
-     * <p>
-     * See <a href="https://qubitpi.github.io/graphql.github.io/learn/serving-over-http/">GraphQL documentation</a> for
-     * specifications on serving GraphQL over HTTP.
      *
-     * @param graphqlQuery  A native GraphQL query operation definition, such as "query={user{name}}"
+     * @param graphqlQuery  A native GraphQL query operation definition, such as
+     * {@code { bookById(id: "book-3") { name, pageCount } }}
      *
      * @return native GraphQL query result
      *

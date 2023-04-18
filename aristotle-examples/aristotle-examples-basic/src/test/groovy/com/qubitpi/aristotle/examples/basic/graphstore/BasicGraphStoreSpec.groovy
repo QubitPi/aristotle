@@ -19,7 +19,6 @@ import com.qubitpi.aristotle.graphstore.GraphStore
 
 import graphql.ExecutionResult
 import graphql.GraphQL
-import groovy.json.JsonSlurper
 import spock.lang.Specification
 
 class BasicGraphStoreSpec extends Specification {

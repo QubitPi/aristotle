@@ -22,10 +22,12 @@ import org.testcontainers.images.builder.ImageFromDockerfile
 import org.testcontainers.spock.Testcontainers
 
 import io.restassured.RestAssured
+import io.restassured.path.json.JsonPath
 import spock.lang.IgnoreIf
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Subject
+import spock.lang.Unroll
 
 import java.nio.file.Paths
 
@@ -42,9 +44,27 @@ import java.nio.file.Paths
 class BasicExampleITSpec extends Specification {
 
     static final int SUCCESS = 0
-    static final String RESPONSE_ROOT = ""
     static final String CHECK_DOCKER_INSTALLED_COMMAND = "docker -v"
     static final String DOCKERFILE_ABS_PATH = String.format("%s/Dockerfile", System.getProperty("user.dir"))
+
+    /**
+     * Returns the data to use in where blocks as a list of lists.
+     *
+     * @return the data as a list of lists
+     */
+    static testIterationData() {
+        [
+                ["{ bookById(id: \"book-1\") { id name pageCount author { id firstName lastName } } }", "book-1.json"],
+                ["{ bookById(id: \"book-2\") { id name pageCount author { id firstName lastName } } }", "book-2.json"],
+                ["{ bookById(id: \"book-3\") { id name pageCount author { id firstName lastName } } }", "book-3.json"],
+                ["{ bookById(id: \"book-1\") { name author { firstName lastName } } }"                , "book-1-with-partial-fields.json"],
+                ["{ bookById(id: \"book-2\") { name author { firstName lastName } } }"                , "book-2-with-partial-fields.json"],
+                ["{ bookById(id: \"book-3\") { name author { firstName lastName } } }"                , "book-3-with-partial-fields.json"],
+                ["{ bookById(id: \"book-1\") { name, pageCount } }"                                   , "book-1-no-author.json"],
+                ["{ bookById(id: \"book-2\") { name, pageCount } }"                                   , "book-2-no-author.json"],
+                ["{ bookById(id: \"book-3\") { name, pageCount } }"                                   , "book-3-no-author.json"]
+        ]
+    }
 
     @SuppressWarnings('GroovyUnusedCatchParameter')
     private static boolean dockerNotInstalled() {
@@ -69,25 +89,25 @@ class BasicExampleITSpec extends Specification {
         RestAssured.basePath = "/v1"
     }
 
-    def "Dockerized basic example responds to GET request with native GraphQL return data"() {
+    @Unroll
+    def "Dockerized basic example responds to GET request '#query' with native GraphQL return data defined in '#expectedJsonFile'"() {
         expect:
         RestAssured.given()
-                .queryParam("query", "{ bookById(id: \"book-1\") { id name pageCount } }")
+                .queryParam("query", query)
                 .when()
                 .get("/data/graphql")
                 .then()
                 .statusCode(200)
                 .body(
-                        RESPONSE_ROOT,
+                        "data.bookById",
                         Matchers.equalTo(
-                                data: [
-                                        bookById: [
-                                                id: "book-1",
-                                                name: "Harry Potter and the Philosopher's Stone",
-                                                pageCount: 223
-                                        ]
-                                ]
+                                new JsonPath(
+                                        new File(String.format("src/test/resources/%s", expectedJsonFile))
+                                ).get()
                         )
                 )
+
+        where:
+        [query, expectedJsonFile] << testIterationData()
     }
 }

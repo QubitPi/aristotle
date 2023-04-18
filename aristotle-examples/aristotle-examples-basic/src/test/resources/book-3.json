@@ -1,0 +1,10 @@
+{
+    "id": "book-3",
+    "name": "Interview with the vampire",
+    "pageCount": 371,
+    "author": {
+        "id": "author-3",
+        "firstName": "Anne",
+        "lastName": "Rice"
+    }
+}
