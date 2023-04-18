@@ -28,16 +28,16 @@ class DataServletSpec extends Specification {
     DataServlet servlet
 
     def "GET delegates to graph store for all GraphQL operations"() {
-        setup:
+        setup: "delegate will return some data"
         graphStore = Mock(GraphStore) {
             query(_ as String) >> {}
         }
         servlet = new DataServlet(graphStore)
 
-        when:
+        when: "servlet is queried"
         servlet.getData("")
 
-        then:
+        then: "query is delegated to the store"
         1 * graphStore.query(_ as String)
     }
 

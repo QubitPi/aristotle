@@ -23,6 +23,8 @@ import jakarta.validation.constraints.NotNull;
 import net.jcip.annotations.Immutable;
 import net.jcip.annotations.ThreadSafe;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * {@link SystemConfigFactory} provides a {@link SystemConfig} instance.
  */
@@ -59,6 +61,10 @@ public final class SystemConfigFactory {
     /**
      * Returns an instance of {@link SystemConfig}.
      *
+     * A custom implementation whose fully qualified class name is keyed as "aristotle.systemConfigImpl" in system
+     * config property will be loaded first. If no such impl. is provided,
+     * {@link AristotleSystemConfig default implementation} will be used.
+     *
      * @return a new instance
      *
      * @throws IllegalStateException if the {@link SystemConfig} implementation class cannot be instantiated
@@ -73,8 +79,9 @@ public final class SystemConfigFactory {
             }
 
             try {
-                return (SystemConfig) Class.forName(systemConfigImplementation).newInstance();
-            } catch (final ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
+                return (SystemConfig) Class.forName(systemConfigImplementation).getDeclaredConstructor().newInstance();
+            } catch (final ClassNotFoundException | InstantiationException | IllegalAccessException |
+                           NoSuchMethodException | InvocationTargetException exception) {
                 LOG.error(ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.logFormat());
                 throw new IllegalStateException(
                         ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.format(),
