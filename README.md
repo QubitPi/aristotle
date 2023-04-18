@@ -25,7 +25,7 @@ Aristotle is a Java library that lets you set up **GraphQL** webservice with min
 specialized on querying **knowledge graph** data.
 
 <a href="https://www.bilibili.com/video/BV1oU4y1P7yd">
-    <img align="right" width="45%" alt="心海" src="https://github.com/QubitPi/QubitPi/blob/master/img/kokomi.png">
+    <img align="right" width="45%" alt="心海" src="https://raw.githubusercontent.com/QubitPi/QubitPi/master/img/aristotle/kokomi.png">
 </a>
 
 Aristotle has **first-class support for [Neo4j][Neo4j] and [Memgraph][Memgraph] databases** for graph data storage
