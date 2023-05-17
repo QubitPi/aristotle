@@ -18,6 +18,6 @@ Changelog
 Checklist
 ---------
 
-* [ ] Test
-* [ ] Self-review
-* [ ] Documentation
+- [ ] Test
+- [ ] Self-review
+- [ ] Documentation
