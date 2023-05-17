@@ -14,7 +14,7 @@
 FROM jetty:11.0.14-jdk11
 
 LABEL maintainer="Jiaqi (Jack) Liu"
-LABEL maintainer-email="jack20191124@proton.me"
+LABEL maintainer-email="jack20220723@gmail.com"
 
 ARG ARISTOTLE_VERSION=1.0-SNAPSHOT
 
