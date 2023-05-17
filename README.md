@@ -1,7 +1,7 @@
 [Aristotle](https://qubitpi.github.io/aristotle/) <sup>![Java Version Badge is Missing](https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white)</sup>
 ===========================================
 
-[![GitHub workflow status][GitHub Workflow Status]](https://github.com/QubitPi/aristotle/actions/workflows/release.yml)
+[![GitHub workflow status][GitHub Workflow Status]](https://github.com/QubitPi/aristotle/actions/workflows/ci-cd.yml)
 ![Last commit][Last Commit]
 [![Discord][Discord]](https://discord.com/widget?id=1093089427229790278&theme=dark)
 [![License Badge][License Badge]](https://www.apache.org/licenses/LICENSE-2.0)
@@ -59,7 +59,7 @@ Documentation
 
 More information about Aristotle can be found [here](https://qubitpi.github.io/aristotle/)
 
-Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status sup]](https://github.com/QubitPi/aristotle/actions/workflows/release.yml)</sup>
+Binaries (How to Get It) <sup>[![GitHub Workflow Status][GitHub Workflow Status sup]](https://github.com/QubitPi/aristotle/actions/workflows/ci-cd.yml)</sup>
 ------------------------
 
 Binaries for Aristotle are stored in [GitHub Packages][Aristotle GitHub Packages]. To install the packages from there,
@@ -153,8 +153,8 @@ The use and distribution terms for [Aristotle](https://qubitpi.github.io/aristot
 
 [Discord]: https://img.shields.io/discord/1093089427229790278?logo=discord&logoColor=white&style=for-the-badge
 
-[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/release.yml?branch=master&logo=github&style=for-the-badge
-[GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/release.yml?branch=master&logo=github&style=flat-square
+[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/ci-cd.yml?branch=master&logo=github&style=flat-square
 
 [Last Commit]: https://img.shields.io/github/last-commit/QubitPi/aristotle/master?logo=github&style=for-the-badge
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
