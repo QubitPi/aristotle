@@ -1,5 +1,5 @@
-[Aristotle](https://qubitpi.github.io/aristotle/) <sup>![Java Version Badge is Missing](https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white)</sup>
-===========================================
+[Aristotle][Aristotle Home] <sup>![Java Version Badge][Java Version Badge]</sup>
+=================================================================================
 
 [![GitHub workflow status][GitHub Workflow Status]](https://github.com/QubitPi/aristotle/actions/workflows/ci-cd.yml)
 ![Last commit][Last Commit]
@@ -139,8 +139,8 @@ Maven by editing your `~/.m2/settings.xml` file to include the personal access t
 License
 -------
 
-The use and distribution terms for [Aristotle](https://qubitpi.github.io/aristotle/) are covered by the
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+The use and distribution terms for [Aristotle][Aristotle Home] are covered by the
+[Apache License, Version 2.0][Apache License, Version 2.0].
 
 <div align="center">
     <a href="https://opensource.org/licenses">
@@ -148,13 +148,17 @@ The use and distribution terms for [Aristotle](https://qubitpi.github.io/aristot
     </a>
 </div>
 
+[Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
 [ArangoDB]: https://www.arangodb.com/
+[Aristotle Home]: https://qubitpi.github.io/aristotle/
 [Aristotle GitHub Packages]: https://github.com/QubitPi?tab=packages&repo_name=aristotle
 
 [Discord]: https://img.shields.io/discord/1093089427229790278?logo=discord&logoColor=white&style=for-the-badge
 
 [GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status sup]: https://img.shields.io/github/actions/workflow/status/QubitPi/aristotle/ci-cd.yml?branch=master&logo=github&style=flat-square
+
+[Java Version Badge]: https://img.shields.io/badge/Java-11-brightgreen?style=flat-square&logo=OpenJDK&logoColor=white
 
 [Last Commit]: https://img.shields.io/github/last-commit/QubitPi/aristotle/master?logo=github&style=for-the-badge
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
