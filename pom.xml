@@ -46,8 +46,8 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <version.aristotle>1.0-SNAPSHOT</version.aristotle>
         <version.validation.api>3.0.1</version.validation.api>
@@ -62,7 +62,7 @@
         <version.derby>10.11.1.1</version.derby>
         <version.flyway.core>5.0.7</version.flyway.core>
         <version.groovy>4.0.6</version.groovy>
-        <version.jetty>11.0.14</version.jetty>
+        <version.jetty>11.0.15</version.jetty>
 
         <version.maven.war.plugin>3.2.2</version.maven.war.plugin>
         <version.maven.release.plugin>2.5.3</version.maven.release.plugin>
@@ -346,7 +346,7 @@
                     <version>${version.maven.release.plugin}</version>
                 </plugin>
 
-                <!-- Use Java 11 -->
+                <!-- Use Java 17 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -409,27 +409,6 @@
                             <goals>
                                 <goal>compile</goal>
                                 <goal>compileTests</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Groovy checkstyle -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>codenarc-maven-plugin</artifactId>
-                    <version>0.22-1</version>
-                    <configuration>
-                        <sourceDirectory>${project.basedir}</sourceDirectory>
-                        <maxPriority1Violations>0</maxPriority1Violations>
-                        <maxPriority2Violations>0</maxPriority2Violations>
-                        <maxPriority3Violations>0</maxPriority3Violations>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>codenarc</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -499,7 +478,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.6</version>
+                    <version>0.8.8</version>
                 </plugin>
             </plugins>
         </pluginManagement>
